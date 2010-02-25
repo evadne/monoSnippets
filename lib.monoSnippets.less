@@ -1,0 +1,118 @@
+@slice: 9px;
+@pack: 8 * @slice;
+
+.borderRadius (@radius: 4.5px) {
+	
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+
+}
+
+.shadowed (@color: rgba(0, 0, 0, 1), @offsetX: 0px, @offsetY: 0px, @spread: 9px) {
+
+	-webkit-box-shadow: @offsetX @offsetY @spread @color;
+	-moz-box-shadow: @offsetX @offsetY @spread @color;
+	-o-box-shadow: @offsetX @offsetY @spread @color;
+	box-shadow: @offsetX @offsetY @spread @color;
+
+}
+
+
+
+
+
+.shadowedText (@color: rgba(255, 255, 255, .5), @offsetX: 0px, @offsetY: 1px, @spread: 0px) {
+
+	text-shadow: @color @offsetX @offsetY @spread;
+
+}
+
+
+
+
+
+.engravedText {
+
+	.shadowedText(rgba(255, 255, 255, .5), 0px, 1px, 0px);
+
+}
+
+
+
+
+
+.withDownwardsArrow {
+
+	:before {
+	
+		content: "";
+		font-family: "Wingdings";
+	
+	}
+
+}
+
+
+
+
+
+.fancyScrollbar(@unitSize: 9px) {
+
+	::-webkit-scrollbar,
+	::-webkit-scrollbar-button:start:increment,
+	::-webkit-scrollbar-button:start:decrement,
+	::-webkit-scrollbar-button:end:increment,
+	::-webkit-scrollbar-button:end:decrement {
+	
+		width: @unitSize;
+		height: @unitSize;
+		display: none;
+	
+	}
+	
+	::-webkit-scrollbar,
+	::-webkit-scrollbar-button:start:decrement,
+	::-webkit-scrollbar-button:end:increment {
+	
+		display: block;
+		    
+	}
+	
+	::-webkit-scrollbar-track {
+	
+		.borderRadius(0.5 * @unitSize);
+		background: rgba(0, 0, 0, .15);
+		
+		:disabled {
+		
+			display: none;
+		
+		}
+	
+	}
+	
+	::-webkit-scrollbar-thumb {
+	
+		.borderRadius(0.5 * @unitSize);
+		background: rgba(0, 0, 0, .25);
+		border: 1px inset rgba(0, 0, 0, .15);
+		
+		-webkit-transition: background-color 2.5s linear;
+	
+	}
+	
+	:hover::-webkit-scrollbar-thumb {
+	
+		background: rgba(0, 0, 0, .35);
+	
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+	
+		background: rgba(0, 0, 0, .55);
+	
+	}
+
+}
