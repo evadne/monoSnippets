@@ -119,6 +119,27 @@ var mono = {
 
 	log: d,
 	
+	error: function(message) {
+	
+		if (!window.console) return;
+		console.error(message);
+		
+	},
+	
+	groupStart: function(title) {
+		
+		if (!window.console) return;
+		console.group(title);
+		
+	},
+	
+	groupEnd: function() {
+	
+		if (!window.console) return;
+		console.groupEnd();
+		
+	},
+	
 	logChanged: function(changedElement, changedKey, oldValue, newValue) {
 	
 		mono.log(changedElement + "['" + changedKey + "']: " + oldValue + " => " + newValue);
