@@ -8,6 +8,9 @@
 	-o-border-radius: @radius;
 	border-radius: @radius;
 
+	-uu-border-radius: @radius;	
+	behavior: url(lib.monoSnippets.hack.borderRadius.htc);
+
 }
 
 
@@ -16,6 +19,7 @@
 .transitioning (@duration: 1s) {
 
 	-webkit-transition: all @duration linear;
+	-moz-transition: all @duration linear;
 
 }
 
@@ -25,10 +29,12 @@
 
 .shadowed (@color: rgba(0, 0, 0, 1), @offsetX: 0px, @offsetY: 0px, @spread: 9px) {
 
-	-webkit-box-shadow: @offsetX @offsetY @spread @color;
-	-moz-box-shadow: @offsetX @offsetY @spread @color;
-	-o-box-shadow: @offsetX @offsetY @spread @color;
-	box-shadow: @offsetX @offsetY @spread @color;
+	-webkit-box-shadow: @color @offsetX @offsetY @spread;
+	-moz-box-shadow: @color @offsetX @offsetY @spread;
+	-o-box-shadow: @color @offsetX @offsetY @spread;
+	box-shadow: @color @offsetX @offsetY @spread;
+	
+	-uu-box-shadow: @color @offsetX @offsetY @spread;
 
 }
 
