@@ -1,4 +1,6 @@
-//	monoSnippets.js — Requires jQuery.  Last updated Feb. 25, 2010.
+//	lib.monoSnippets.js
+//	Evadne Wu at Iridia Productions
+//	Version as of Mar. 13, 2010
 
 
 
@@ -300,24 +302,31 @@ var mono = {
 
 	log: d,
 	
+	info: function(message) {
+	
+		if (!window.console) return;
+		return console.info(message);
+		
+	},
+	
 	error: function(message) {
 	
 		if (!window.console) return;
-		console.error(message);
+		return console.error(message);
 		
 	},
 	
 	groupStart: function(title) {
 		
 		if (!window.console) return;
-		console.group(title);
+		return console.group(title);
 		
 	},
 	
 	groupEnd: function() {
 	
 		if (!window.console) return;
-		console.groupEnd();
+		return console.groupEnd();
 		
 	},
 	
@@ -338,5 +347,5 @@ var mono = {
 		return (!(typeof objectToCheck == "undefined"));
 		
 	}
-
-}
+	
+};
