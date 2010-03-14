@@ -300,33 +300,48 @@ function monoValidate(stringToBeValidated, proposedCategory) {
 
 var mono = {
 
-	log: d,
+	log: function(message) {
+		
+		if (window.console)
+		console.log(message);
+
+		return mono;
+		
+	},
 	
 	info: function(message) {
 	
-		if (!window.console) return;
-		return console.info(message);
+		if (window.console)
+		console.info(message);
+		
+		return mono;
 		
 	},
 	
 	error: function(message) {
 	
-		if (!window.console) return;
-		return console.error(message);
+		if (window.console)
+		console.error(message);
+		
+		return mono;
 		
 	},
 	
 	groupStart: function(title) {
 		
-		if (!window.console) return;
-		return console.group(title);
+		if (window.console)
+		console.group(title);
+
+		return mono;
 		
 	},
 	
 	groupEnd: function() {
 	
-		if (!window.console) return;
-		return console.groupEnd();
+		if (window.console)
+		console.groupEnd();
+
+		return mono;
 		
 	},
 	
@@ -334,17 +349,38 @@ var mono = {
 	
 		mono.log(changedElement + "['" + changedKey + "']: " + oldValue + " => " + newValue);
 		
+		return mono;
+		
 	},
 
 	CSS: function monoLoadExternalStylesheet(stylesheetLocationURI) {
 
 		$('head').append('<link rel="stylesheet" type="text/css" href=' + stylesheetLocationURI + '>');
+		
+		return mono;
 	
 	},
 	
 	def: function isDefined(objectToCheck) {
 		
 		return (!(typeof objectToCheck == "undefined"));
+		
+		return mono;
+		
+	},
+	
+	HTML5: function() {
+	
+	//	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+	
+		var plausibleHTML5Elements: [],
+		
+		$.each(plausibleHTML5Elements, function(index, elementTag) {
+		
+		$("<" + elementTag + " />").appendTo("body")
+			
+		});
 		
 	}
 	
