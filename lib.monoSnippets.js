@@ -371,17 +371,18 @@ var mono = {
 	
 	HTML5: function() {
 	
-	//	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-
+	//	http://html5shiv.googlecode.com/svn/trunk/html5.js
 	
-		var plausibleHTML5Elements: [],
+		for (tagToBeInserted in ['abbr', 'article', 'aside', 'audio', 'canvas', 'details', 'figcaption', 'figure', 'footer', 'header', 'hgroup', 'mark', 'menu', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'time', 'video']) {
+
+		/*@cc_on
 		
-		$.each(plausibleHTML5Elements, function(index, elementTag) {
+			document.createElement(tagToBeInserted)
+
+		@*/
 		
-		$("<" + elementTag + " />").appendTo("body")
-			
-		});
-		
+		}
+
 	}
 	
 };
