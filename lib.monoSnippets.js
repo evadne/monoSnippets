@@ -303,7 +303,7 @@ var mono = {
 	log: function(message) {
 		
 		if (window.console)
-		console.log(message);
+		console.log.apply(console, arguments);
 
 		return mono;
 		
@@ -312,7 +312,7 @@ var mono = {
 	info: function(message) {
 	
 		if (window.console)
-		console.info(message);
+		console.info.apply(console, arguments);
 		
 		return mono;
 		
@@ -321,7 +321,7 @@ var mono = {
 	error: function(message) {
 	
 		if (window.console)
-		console.error(message);
+		console.error.apply(console, arguments);
 		
 		return mono;
 		
@@ -330,7 +330,7 @@ var mono = {
 	groupStart: function(title) {
 		
 		if (window.console)
-		console.group(title);
+		console.group.apply(console, arguments);
 
 		return mono;
 		
@@ -339,7 +339,7 @@ var mono = {
 	groupEnd: function() {
 	
 		if (window.console)
-		console.groupEnd();
+		console.groupEnd.apply(console, arguments);
 
 		return mono;
 		
@@ -347,15 +347,22 @@ var mono = {
 	
 	logChanged: function(changedElement, changedKey, oldValue, newValue) {
 	
-		mono.log(changedElement + "['" + changedKey + "']: " + oldValue + " => " + newValue);
+		return mono.log(
 		
-		return mono;
+			changedElement + "['" + changedKey + "']: " +
+			oldValue + " => " + newValue
+		
+		);
 		
 	},
 
 	CSS: function monoLoadExternalStylesheet(stylesheetLocationURI) {
 
-		$('head').append('<link rel="stylesheet" type="text/css" href=' + stylesheetLocationURI + '>');
+		$("<link />")
+		.attr("rel", "stylesheet")
+		.attr("type", "text/css")
+		.attr("href", stylesheetLocationURI)
+		.appendTo("head");
 		
 		return mono;
 	
@@ -363,15 +370,13 @@ var mono = {
 	
 	def: function isDefined(objectToCheck) {
 		
-		return (!(typeof objectToCheck == "undefined"));
-		
-		return mono;
+		return (objectToCheck !== undefined);
 		
 	},
 	
 	HTML5: function() {
 	
-	//	http://html5shiv.googlecode.com/svn/trunk/html5.js
+	//	a fork of http://html5shiv.googlecode.com/svn/trunk/html5.js
 	
 		for (tagToBeInserted in ['abbr', 'article', 'aside', 'audio', 'canvas', 'details', 'figcaption', 'figure', 'footer', 'header', 'hgroup', 'mark', 'menu', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'time', 'video']) {
 
