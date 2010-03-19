@@ -9,26 +9,47 @@ mono.notificationCenter = {
 
 	_notificationListeners: {
 	
-	//	notificationKey: [listenerReference, listenerReference, listenerReference, …];
+	//	notificationKey: [listenerReference, listenerReference, listenerReference, …],
+	//	…: […, …]
 	
 	},
 
+
+
+
+
+
+
+
+
+
 	registerForNotificationWithKeyAndListener: function (aKey, aListenerReference) {
 
-		if (aKey === undefined)
-		return mono.error("Call to mono.notificationCenter.registerForNotificationWithKeyAndListener lacks a key.");
+		mono.log("Registering a new notification listener to key ", aKey, " with reference: ", aListenerReference);
 
-		if (aListenerReference === undefined)
-		aListenerReference = arguments.callee;
+		if (aKey === undefined) {
+
+			mono.error("Call to mono.notificationCenter.registerForNotificationWithKeyAndListener lacks a key.");
+
+			return false;
 		
-		var listenerArray = mono.notificationCenter['_notificationListeners'][aKey];
-	
-		if (typeof listenerArray != 'array')
-		listenerArray = [];
-	
-		if ($.inArray(aListenerReference, listenerArray) != -1) {
+		}
 		
-			mono.info("listener reference " + aListenerReference + " for key " + aKey + " is already registered.  Skipping.");
+
+		if (aListenerReference === undefined) {
+		
+			mono.error("The listener reference is undefined!");
+			return false;
+			
+		}
+		
+		
+		if (mono.notificationCenter['_notificationListeners'][aKey] === undefined)
+		mono.notificationCenter['_notificationListeners'][aKey] = [];
+	
+		if ($.inArray(aListenerReference, mono.notificationCenter['_notificationListeners'][aKey]) != -1) {
+		
+			mono.info("This caller has already registered as a listener reference for key " + aKey + ".  Skipping.");
 			
 			return true;
 		
@@ -40,6 +61,15 @@ mono.notificationCenter = {
 	
 	},
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	retireFromNotificationWithKeyAndListener: function(aKey, aListenerReference) {
 	
 		if (aKey === undefined) {
@@ -49,24 +79,62 @@ mono.notificationCenter = {
 			return false;
 			
 		}
+
+		if (aListenerReference === undefined) {
 		
-		if (aListenerReference === undefined)
-		aListenerReference = arguments.callee;
+			mono.error("The listener reference is undefined!");
+			return false;
+			
+		}
 		
-		var listenerArray = mono.notificationCenter['_notificationListeners'][aKey];
 		
-		if (typeof listenerArray != 'array') {
+		
+		
+		
+		mono.log("Listener with a reference of ", aListenerReference, " asks to retire from receiving notifications associated with key ", aKey);
+		
+		if (mono.notificationCenter['_notificationListeners'][aKey] === undefined) {
+		
+			mono.info("Key ", aKey, " does not even have any listeners");
+			return true;
+		
+		}	
+		
+		if (mono.notificationCenter['_notificationListeners'][aKey].length == 0) {
 		
 			mono.info("Key ", aKey, " does not even have any listeners");
 			return true;
 		
 		}
 		
+
+
+
+
+		mono.notificationCenter['_notificationListeners'][aKey] = $.grep(mono.notificationCenter['_notificationListeners'][aKey], function(element, index){
+		
+			return element != aListenerReference;
+
+		});
+				
 	},
 	
-	dispatchNotificationWithKeyAndPredicate: function(aKey, aPredicate) {
 	
-	//	Asynchronous notification?
+	
+	
+	
+	
+	
+	
+	
+	
+	dispatchNotificationWithKeyAndPredicate: function dispatchNotificationWithKeyAndPredicate(aKey, aPredicate) {
+		
+		
+		
+		
+		
+	//	Bonus: Asynchronous notification?
 		
 		if (typeof arguments[2] == 'object')
 		if (arguments[2]['asynchronously'] === true)
@@ -79,6 +147,8 @@ mono.notificationCenter = {
 	//	Listener array reference.
 	
 		var listenerArray = mono.notificationCenter['_notificationListeners'][aKey];
+		
+		mono.log("Dispatching notification with key ", aKey, " . ");
 		
 		
 		
@@ -100,7 +170,12 @@ mono.notificationCenter = {
 	
 	//	Go!
 	
-		$.each(listenerArray, function(notificationListenerIndex, plausibleNotificationListener) {
+		$.each(listenerArray, function(
+		
+			notificationListenerIndex, 
+			plausibleNotificationListener
+			
+			) {
 			
 			if (plausibleNotificationListener !== undefined) {
 			
