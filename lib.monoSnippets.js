@@ -299,7 +299,7 @@ function monoValidate(stringToBeValidated, proposedCategory) {
 
 
 var mono = {
-
+	
 	log: function(message) {
 		
 		if (window.console)
