@@ -242,11 +242,39 @@ $.fn.slowEach = function(interval, callback){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function d (message){
 
 	if (!window.console) return;
 
 	if (typeof debugMode != "boolean" || debugMode != true) return;
+	
+	window.console.log("d() is deprecated and you’re advised to call mono.log instead.");
+	
 	window.console.log(message);
 	
 	if (typeof debugModeVerbose != "boolean" || debugModeVerbose != true) return;
@@ -299,6 +327,12 @@ function monoValidate(stringToBeValidated, proposedCategory) {
 
 
 var mono = {
+
+
+
+
+
+//	Logging and Debugging
 	
 	log: function(message) {
 		
@@ -356,6 +390,12 @@ var mono = {
 		
 	},
 
+
+
+
+
+//	Lazy-Loading
+
 	CSS: function monoLoadExternalStylesheet(stylesheetLocationURI) {
 
 		$("<link />")
@@ -367,12 +407,12 @@ var mono = {
 		return mono;
 	
 	},
-	
-	def: function isDefined(objectToCheck) {
-		
-		return (objectToCheck !== undefined);
-		
-	},
+
+
+
+
+
+//	Minions
 	
 	HTML5: function() {
 	
