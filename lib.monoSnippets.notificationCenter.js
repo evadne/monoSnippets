@@ -194,8 +194,6 @@ mono.notificationCenter = {
 					"for key ", aKey, " is undefined."
 				
 				).groupEnd();
-				
-				return false;
 			
 			}
 			
