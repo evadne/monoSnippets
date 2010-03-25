@@ -2,9 +2,6 @@
 //	Evadne Wu at Iridia Productions
 //	Version as of Mar. 15, 2010
 
-if (jQuery === undefined) return;
-if (mono === undefined) return;
-
 mono.notificationCenter = {
 
 	_notificationListeners: {
@@ -25,11 +22,13 @@ mono.notificationCenter = {
 
 	registerForNotificationWithKeyAndListener: function (aKey, aListenerReference) {
 
-		mono.log("Registering a new notification listener to key ", aKey, " with reference: ", aListenerReference);
+	//	TODO: minion that fetches function identifier
+
+		mono.groupStart("Registering a new notification listener to ", aKey).log(aListenerReference);
 
 		if (aKey === undefined) {
 
-			mono.error("Call to mono.notificationCenter.registerForNotificationWithKeyAndListener lacks a key.");
+			mono.error("Call to mono.notificationCenter.registerForNotificationWithKeyAndListener lacks a key.").groupEnd();
 
 			return false;
 		
@@ -38,7 +37,7 @@ mono.notificationCenter = {
 
 		if (aListenerReference === undefined) {
 		
-			mono.error("The listener reference is undefined!");
+			mono.error("The listener reference is undefined!").groupEnd();
 			return false;
 			
 		}
@@ -49,13 +48,14 @@ mono.notificationCenter = {
 	
 		if ($.inArray(aListenerReference, mono.notificationCenter['_notificationListeners'][aKey]) != -1) {
 		
-			mono.info("This caller has already registered as a listener reference for key " + aKey + ".  Skipping.");
+			mono.info("This caller has already registered as a listener reference for key " + aKey + ".  Skipping.").groupEnd();
 			
 			return true;
 		
 		}
 		
 		mono.notificationCenter._notificationListeners[aKey].push(aListenerReference);
+		mono.groupEnd();
 		
 		return true;
 	
@@ -72,9 +72,11 @@ mono.notificationCenter = {
 	
 	retireFromNotificationWithKeyAndListener: function(aKey, aListenerReference) {
 	
+		mono.groupStart("Listener with a reference of ", aListenerReference, " asks to retire from receiving notifications associated with key ", aKey);
+	
 		if (aKey === undefined) {
 		
-			mono.error("Call to mono.notificationCenter.retireFromNotificationWithKeyAndListener lacks a key.");
+			mono.error("Call to mono.notificationCenter.retireFromNotificationWithKeyAndListener lacks a key.").groupEnd();
 			
 			return false;
 			
@@ -82,7 +84,7 @@ mono.notificationCenter = {
 
 		if (aListenerReference === undefined) {
 		
-			mono.error("The listener reference is undefined!");
+			mono.error("The listener reference is undefined!").groupEnd();
 			return false;
 			
 		}
@@ -91,18 +93,21 @@ mono.notificationCenter = {
 		
 		
 		
-		mono.log("Listener with a reference of ", aListenerReference, " asks to retire from receiving notifications associated with key ", aKey);
+		
+		
+		
+		
 		
 		if (mono.notificationCenter['_notificationListeners'][aKey] === undefined) {
 		
-			mono.info("Key ", aKey, " does not even have any listeners");
+			mono.info("Key ", aKey, " does not even have any listeners").groupEnd();
 			return true;
 		
 		}	
 		
 		if (mono.notificationCenter['_notificationListeners'][aKey].length == 0) {
 		
-			mono.info("Key ", aKey, " does not even have any listeners");
+			mono.info("Key ", aKey, " does not even have any listeners").groupEnd();
 			return true;
 		
 		}
@@ -148,7 +153,7 @@ mono.notificationCenter = {
 	
 		var listenerArray = mono.notificationCenter['_notificationListeners'][aKey];
 		
-		mono.log("Dispatching notification with key ", aKey, " . ");
+		mono.groupStart("Dispatching notification with key ", aKey, " . ").log(aPredicate);
 		
 		
 		
@@ -158,7 +163,7 @@ mono.notificationCenter = {
 	
 		if (listenerArray === undefined || listenerArray.length == 0) {
 		
-			mono.info("Key ", aKey, " does not have any registered listener so actually no notification would be sent.");
+			mono.info("Key ", aKey, " does not have any registered listener so actually no notification would be sent.").groupEnd();
 			
 			return true;
 		
@@ -188,13 +193,15 @@ mono.notificationCenter = {
 					"Listener ", plausibleNotificationListener, 
 					"for key ", aKey, " is undefined."
 				
-				);
+				).groupEnd();
 				
 				return false;
 			
 			}
 			
 		});
+		
+		mono.groupEnd();
 		
 		return true;
 		

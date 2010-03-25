@@ -7,10 +7,6 @@
 
 
 
-
-
-
-
 /* Created by Martin Hintzmann 2008 martin [a] hintzmann.dk
  * MIT (http://www.opensource.org/licenses/mit-license.php) licensed.
  *
@@ -389,3 +385,10 @@ var mono = {
 	}
 	
 };
+
+
+
+
+
+
+
