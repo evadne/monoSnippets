@@ -366,7 +366,28 @@ var mono = {
 
 
 
-//	Minions
+
+
+
+
+
+//	Dying and / or choking.  Minions that does nothing, but enables one-liners.
+
+	die: function() {
+	
+		return undefined;
+		
+	},
+	
+	choke: function() {
+
+		return {};
+			
+	},
+	
+	
+	
+	
 	
 	HTML5: function() {
 	
