@@ -371,6 +371,23 @@ var mono = {
 
 
 
+//	Stripping
+
+	stripUnits: function(stringToStrip) {
+			
+		return Number(String(stringToStrip).replace(/px|em/ig, ''));
+		
+	},
+
+
+
+
+
+
+
+
+
+
 //	Dying and / or choking.  Minions that does nothing, but enables one-liners.
 
 	die: function() {
