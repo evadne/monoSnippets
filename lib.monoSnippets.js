@@ -290,7 +290,7 @@ var mono = {
 	
 	log: function(message) {
 		
-		if (window.console != undefined)
+		if (window.console !== undefined)
 		console.log.apply(console, arguments);
 
 		return mono;
@@ -299,7 +299,7 @@ var mono = {
 	
 	info: function(message) {
 	
-		if (window.console != undefined)
+		if (window.console !== undefined)
 		console.info.apply(console, arguments);
 		
 		return mono;
@@ -308,7 +308,7 @@ var mono = {
 	
 	error: function(message) {
 	
-		if (window.console != undefined)
+		if (window.console !== undefined)
 		console.error.apply(console, arguments);
 		
 		return mono;
@@ -317,7 +317,7 @@ var mono = {
 	
 	groupStart: function(title) {
 		
-		if (window.console != undefined)
+		if (window.console !== undefined)
 		console.group.apply(console, arguments);
 
 		return mono;
@@ -326,7 +326,7 @@ var mono = {
 	
 	groupEnd: function() {
 	
-		if (window.console != undefined)
+		if (window.console !== undefined)
 		console.groupEnd.apply(console, arguments);
 
 		return mono;
