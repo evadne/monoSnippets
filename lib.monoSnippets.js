@@ -17,7 +17,8 @@ var mono = {
 	
 	log: function(message) {
 		
-		if (window.console != undefined)
+		if (window.console == undefined) return mono;
+
 		console.log.apply(console, arguments);
 
 		return mono;
@@ -26,7 +27,8 @@ var mono = {
 	
 	info: function(message) {
 	
-		if (window.console != undefined)
+		if (window.console == undefined) return mono;
+		
 		console.info.apply(console, arguments);
 		
 		return mono;
@@ -35,7 +37,8 @@ var mono = {
 	
 	error: function(message) {
 	
-		if (window.console != undefined)
+		if (window.console == undefined) return mono;
+		
 		console.error.apply(console, arguments);
 		
 		return mono;
@@ -44,7 +47,8 @@ var mono = {
 	
 	groupStart: function(title) {
 		
-		if (window.console != undefined)
+		if (window.console == undefined) return mono;
+		
 		console.group.apply(console, arguments);
 
 		return mono;
@@ -53,7 +57,8 @@ var mono = {
 	
 	groupEnd: function() {
 	
-		if (window.console != undefined)
+		if (window.console == undefined) return mono;
+		
 		console.groupEnd.apply(console, arguments);
 
 		return mono;
@@ -62,6 +67,8 @@ var mono = {
 	
 	logChanged: function(changedElement, changedKey, oldValue, newValue) {
 	
+		if (window.console == undefined) return mono;
+		
 		return mono.log(
 		
 			changedElement + "['" + changedKey + "']: " +
