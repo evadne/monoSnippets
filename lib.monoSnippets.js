@@ -115,6 +115,22 @@ var mono = {
 		return Number(String(stringToStrip).replace(/px|em/ig, ''));
  
 	},
+	
+	getFunctionName: function(aFunctionReference) {
+	
+		aFunctionReference = String(aFunctionReference);
+	
+		var plausibleFunctionReferenceElements = undefined;
+		
+		try {
+		
+		plausibleFunctionReferenceElements = /function\s([a-zA-Z]+)\(/ig.exec(aFunctionReference)[1];
+		
+		} catch (e) {}
+	
+		return plausibleFunctionReferenceElements;
+		
+	},
 
 
 
