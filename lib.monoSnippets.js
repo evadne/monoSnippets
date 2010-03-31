@@ -130,7 +130,7 @@ var mono = {
 	
 		return plausibleFunctionReferenceElements;
 		
-	}
+	},
 
 
 
