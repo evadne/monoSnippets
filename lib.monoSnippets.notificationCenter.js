@@ -24,7 +24,7 @@ mono.notificationCenter = {
 
 	//	TODO: minion that fetches function identifier
 
-		mono.groupStart("Registering a new notification listener to ", aKey).log(aListenerReference);
+		mono.groupStart("Registering a new notification listener to ", aKey).log(mono.getFunctionName(aListenerReference));
 
 		if (aKey === undefined) {
 
@@ -72,7 +72,7 @@ mono.notificationCenter = {
 	
 	retireFromNotificationWithKeyAndListener: function(aKey, aListenerReference) {
 	
-		mono.groupStart("Listener with a reference of ", aListenerReference, " asks to retire from receiving notifications associated with key ", aKey);
+		mono.groupStart("Listener with a reference of ", mono.getFunctionName(aListenerReference), " asks to retire from receiving notifications associated with key ", aKey);
 	
 		if (aKey === undefined) {
 		
