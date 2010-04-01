@@ -1,3 +1,4 @@
+.doubleEngravedText { text-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px, rgba(0, 0, 0, 0.15) 0px -1px 0px; }
 .withDownwardsArrow:before {
   content: "";
   font-family: "Wingdings";

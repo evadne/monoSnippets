@@ -72,6 +72,13 @@
 
 }
 
+.doubleEngravedText {
+
+	text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
+			rgba(0, 0, 0, .15) 0px -1px 0px;
+
+}
+
 
 
 
@@ -84,6 +91,14 @@
 		font-family: "Wingdings";
 	
 	}
+
+}
+
+.rigidWidth (@width: 144px, @minWidth: @width, @maxWidth: @width) {
+
+	width: @width;
+	min-width: @minWidth;
+	max-width: @maxWidth;
 
 }
 
