@@ -5,6 +5,24 @@
 @slice: 9px;
 @pack: 8 * @slice;
 
+
+
+
+
+.inlineBlock {
+
+//	Mozilla Firefox
+	display: -moz-inline-stack;
+	
+//	Nonquirkies
+	display: inline-block;
+
+//	IE
+	zoom: 1;
+	*display: inline;
+
+}
+
 .borderRadius (@radius: 4.5px) {
 	
 	-webkit-border-radius: @radius;
