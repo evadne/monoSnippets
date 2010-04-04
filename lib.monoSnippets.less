@@ -74,6 +74,21 @@
 
 
 
+	.doubleShadowed (@color01: rgba(0, 0, 0, 1), @offsetX01: 0px, @offsetY01: 0px, @spread01: 9px, @color02: @color01, @offsetX02: @offsetX01, @offsetY02: @offsetY01, @spread02: @spread01) {
+		
+		-webkit-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+		-moz-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+		-o-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+		box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+		
+		-uu-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+	
+	}
+
+
+
+
+
 .shadowedText (@color: rgba(255, 255, 255, .5), @offsetX: 0px, @offsetY: 1px, @spread: 0px) {
 
 	text-shadow: @color @offsetX @offsetY @spread;
@@ -111,6 +126,22 @@
 	}
 
 }
+
+
+
+
+
+.bordered (@borderColor: white, @borderWidth: 1px) {
+
+	border: @borderWidth solid @borderColor;
+	margin: -1 * @borderWidth;
+
+}
+
+
+
+
+
 
 .rigidWidth (@width: 144px, @minWidth: @width, @maxWidth: @width) {
 
