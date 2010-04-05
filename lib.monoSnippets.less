@@ -48,10 +48,11 @@
 
 
 
-.text (@fontSize: 14px, @lineHeight: 18px) {
+.text (@fontSize: 14px, @lineHeight: 18px, @color: inherit) {
 
 	font-size: @fontSize;
 	line-height: @lineHeight;
+	color: @color;
 	
 }
 
@@ -70,10 +71,6 @@
 
 }
 
-
-
-
-
 	.doubleShadowed (@color01: rgba(0, 0, 0, 1), @offsetX01: 0px, @offsetY01: 0px, @spread01: 9px, @color02: @color01, @offsetX02: @offsetX01, @offsetY02: @offsetY01, @spread02: @spread01) {
 		
 		-webkit-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
@@ -82,6 +79,17 @@
 		box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
 		
 		-uu-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
+	
+	}
+	
+	.tripleShadowed (@color01: rgba(0, 0, 0, 1), @offsetX01: 0px, @offsetY01: 0px, @spread01: 9px, @color02: @color01, @offsetX02: @offsetX01, @offsetY02: @offsetY01, @spread02: @spread01, @color03: @color01, @offsetX03: @offsetX01, @offsetY03: @offsetY01, @spread03: @spread01) {
+		
+		-webkit-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02, @color03 @offsetX03 @offsetY03 @spread03;
+		-moz-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02, @color03 @offsetX03 @offsetY03 @spread03;
+		-o-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02, @color03 @offsetX03 @offsetY03 @spread03;
+		box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02, @color03 @offsetX03 @offsetY03 @spread03;
+		
+		-uu-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02, @color03 @offsetX03 @offsetY03 @spread03;
 	
 	}
 
