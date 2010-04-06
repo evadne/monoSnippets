@@ -23,6 +23,10 @@
 
 }
 
+
+
+
+
 .borderRadius (@radius: 4.5px) {
 	
 	-webkit-border-radius: @radius;
@@ -38,6 +42,7 @@
 
 
 
+
 .transitioning (@duration: 1s) {
 
 	-webkit-transition: all @duration linear;
@@ -48,12 +53,28 @@
 
 
 
+
 .text (@fontSize: 14px, @lineHeight: 18px, @color: inherit) {
 
 	font-size: @fontSize;
 	line-height: @lineHeight;
 	color: @color;
 	
+}
+
+
+
+
+
+.borderImage (@image: none, @borderTopWidth: 0px, @borderRightWidth: 0px, @borderBottomWidth: 0px, @borderLeftWidth: 0px, @borderScaling: round) {
+
+	-o-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	-icab-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	-khtml-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	-moz-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	-webkit-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+
 }
 
 
@@ -113,12 +134,12 @@
 
 }
 
-.doubleEngravedText {
-
-	text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
-			rgba(0, 0, 0, .15) 0px -1px 0px;
-
-}
+	.doubleEngravedText {
+	
+		text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
+				rgba(0, 0, 0, .15) 0px -1px 0px;
+	
+	}
 
 
 
@@ -158,6 +179,11 @@
 	max-width: @maxWidth;
 
 }
+
+
+
+
+
 
 
 
