@@ -66,15 +66,21 @@
 
 
 
-.borderImage (@image: none, @borderTopWidth: 0px, @borderRightWidth: 0px, @borderBottomWidth: 0px, @borderLeftWidth: 0px, @borderScaling: round) {
+.borderImage (@image: none, @borderTopWidth: 0, @borderRightWidth: 0, @borderBottomWidth: 0, @borderLeftWidth: 0, @borderScaling: round) {
 
 	-o-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 	-icab-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 	-khtml-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 	-moz-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 	-webkit-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
-	border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 
+	border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
+	
+	border-top-width: 1px * @borderTopWidth;	
+	border-right-width: 1px * @borderRightWidth;
+	border-bottom-width: 1px * @borderBottomWidth;
+	border-left-width: 1px * @borderLeftWidth;
+	
 }
 
 	.threePartImage (@image: none, @borderLeftWidth: 0px, @borderRightWidth: 0px) {
