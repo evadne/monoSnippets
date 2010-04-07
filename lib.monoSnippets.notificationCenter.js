@@ -20,6 +20,31 @@ mono.notificationCenter = {
 
 
 
+	init: function() {
+	
+		//	Lazily register all handlers
+		
+		if (!window.hasOwnProperty('_monoNotificationCenterListeners')) return;
+
+		$.each(window._monoNotificationCenterListeners, function(aNotificationKey, aListenerReference) {
+			
+			mono.notificationCenter.registerForNotificationWithKeyAndListener(aNotificationKey, aListenerReference);
+			
+		});
+		
+		delete _monoNotificationCenterListeners;
+		
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	registerForNotificationWithKeyAndListener: function (aKey, aListenerReference) {
 
 	//	TODO: minion that fetches function identifier
@@ -206,3 +231,9 @@ mono.notificationCenter = {
 	}
 
 };
+
+
+
+
+
+mono.notificationCenter.init();
