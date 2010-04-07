@@ -19,7 +19,11 @@ var mono = {
 		
 		if (window.console == undefined) return mono;
 
-		console.log.apply(console, arguments);
+		try {
+
+			console.log.apply(console, arguments);
+		
+		} catch (e) {}
 
 		return mono;
 		
@@ -29,7 +33,11 @@ var mono = {
 	
 		if (window.console == undefined) return mono;
 		
-		console.info.apply(console, arguments);
+		try {
+
+			console.info.apply(console, arguments);
+		
+		} catch (e) {}
 		
 		return mono;
 		
@@ -39,7 +47,11 @@ var mono = {
 	
 		if (window.console == undefined) return mono;
 		
-		console.error.apply(console, arguments);
+		try {
+
+			console.error.apply(console, arguments);
+		
+		} catch (e) {}
 		
 		return mono;
 		
@@ -49,7 +61,11 @@ var mono = {
 		
 		if (window.console == undefined) return mono;
 		
-		console.group.apply(console, arguments);
+		try {
+
+			console.group.apply(console, arguments);
+		
+		} catch (e) {}
 
 		return mono;
 		
@@ -59,7 +75,11 @@ var mono = {
 	
 		if (window.console == undefined) return mono;
 		
-		console.groupEnd.apply(console, arguments);
+		try {
+
+			console.groupEnd.apply(console, arguments);
+		
+		} catch (e) {}
 
 		return mono;
 		
