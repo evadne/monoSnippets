@@ -3,7 +3,7 @@
 
 mono.preferencesController = function (aPreferencesDictionary) {
 
-	var _holder = {} || aPreferencesDictionary;
+	var _holder = aPreferencesDictionary || {};
 	
 	return function (aKey, aPlausibleValue) {
 	
