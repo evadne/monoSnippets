@@ -16,6 +16,8 @@ var mono = {
 //	Logging and Debugging
 	
 	log: function(message) {
+
+		if (!!!debugMode) return mono;
 		
 		if (window.console == undefined) return mono;
 
@@ -24,13 +26,15 @@ var mono = {
 			console.log.apply(console, arguments);
 		
 		} catch (e) {}
-
+		
 		return mono;
 		
 	},
 	
 	info: function(message) {
 	
+		if (!!!debugMode) return mono;
+		
 		if (window.console == undefined) return mono;
 		
 		try {
@@ -45,6 +49,8 @@ var mono = {
 	
 	error: function(message) {
 	
+		if (!!!debugMode) return mono;
+		
 		if (window.console == undefined) return mono;
 		
 		try {
@@ -58,6 +64,8 @@ var mono = {
 	},
 	
 	groupStart: function(title) {
+		
+		if (!!!debugMode) return mono;
 		
 		if (window.console == undefined) return mono;
 		
@@ -73,6 +81,8 @@ var mono = {
 	
 	groupEnd: function() {
 	
+		if (!!!debugMode) return mono;
+		
 		if (window.console == undefined) return mono;
 		
 		try {
@@ -87,6 +97,8 @@ var mono = {
 	
 	logChanged: function(changedElement, changedKey, oldValue, newValue) {
 	
+		if (!!!debugMode) return mono;
+		
 		if (window.console == undefined) return mono;
 		
 		return mono.log(
