@@ -28,9 +28,13 @@
 
 .borderRadius (@radius: 4.5px, @radius2: @radius, @radius3: @radius, @radius4: @radius) {
 	
+	-webkit-border-radius: @radius;
 	-webkit-border-radius: @radius @radius2 @radius3 @radius4;
+	
 	-moz-border-radius: @radius @radius2 @radius3 @radius4;
+
 	-o-border-radius: @radius @radius2 @radius3 @radius4;
+
 	border-radius: @radius @radius2 @radius3 @radius4;
 
 	-uu-border-radius: @radius @radius2 @radius3 @radius4;	
