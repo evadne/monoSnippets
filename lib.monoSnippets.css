@@ -9,3 +9,8 @@
   content: "";
   font-family: "Wingdings";
 }
+.deselection {
+  webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
