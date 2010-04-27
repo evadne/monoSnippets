@@ -293,8 +293,33 @@
 
 .deselection {
 
-	webkit-user-select: none;
+	-webkit-user-select: none;
 	-moz-user-select: none; 
 	user-select: none; 
+
+}
+
+
+
+
+
+.link {
+	
+	cursor: pointer;
+
+}
+
+
+
+
+	
+.full(@inset:0px) {
+
+	display: block;
+	position: absolute;
+	left: @inset;
+	right: @inset;
+	top: @inset;
+	bottom: @inset;
 
 }
