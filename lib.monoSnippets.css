@@ -15,3 +15,4 @@
   user-select: none;
 }
 .link { cursor: pointer; }
+.thinStroke { -webkit-text-stroke: 1px transparent; }
