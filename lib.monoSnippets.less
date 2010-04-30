@@ -84,6 +84,18 @@
 
 }
 
+	
+	.full (@top:0, @right:@top, @bottom:@top, @left:@top) {
+
+		display: block;
+		position: absolute;
+		top: @top;
+		right: @right;
+		bottom: @bottom;
+		left: @left;
+	
+	}
+
 
 
 
@@ -306,21 +318,6 @@
 .link {
 	
 	cursor: pointer;
-
-}
-
-
-
-
-	
-.full(@inset:0px) {
-
-	display: block;
-	position: absolute;
-	left: @inset;
-	right: @inset;
-	top: @inset;
-	bottom: @inset;
 
 }
 
