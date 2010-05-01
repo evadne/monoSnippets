@@ -100,7 +100,7 @@
 
 
 
-.borderImage (@image: none, @borderTopWidth: 0, @borderRightWidth: 0, @borderBottomWidth: 0, @borderLeftWidth: 0, @borderScaling: round) {
+.borderImage (@image: none, @borderTopWidth: 0, @borderRightWidth: @borderTopWidth, @borderBottomWidth: @borderTopWidth, @borderLeftWidth: @borderTopWidth, @borderScaling: round) {
 
 	-o-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
 	-icab-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
