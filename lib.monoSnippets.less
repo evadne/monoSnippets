@@ -38,12 +38,10 @@
 //	-webkit-border-radius: @radius @radius2 @radius3 @radius4;
 	
 	-moz-border-radius: @radius @radius2 @radius3 @radius4;
-
 	-o-border-radius: @radius @radius2 @radius3 @radius4;
-
 	border-radius: @radius @radius2 @radius3 @radius4;
-
 	-uu-border-radius: @radius @radius2 @radius3 @radius4;	
+
 	behavior: url(lib.monoSnippets.hack.borderRadius.htc);
 
 }
@@ -85,14 +83,21 @@
 }
 
 	
-	.full (@top:0, @right:@top, @bottom:@top, @left:@top) {
+	.fullInset (@topInset: 0, @rightInset: @topInset, @bottomInset: @topInset, @leftInset: @leftInset) {
 
 		display: block;
 		position: absolute;
-		top: @top;
-		right: @right;
-		bottom: @bottom;
-		left: @left;
+
+		top: @topInset;
+		right: @rightInset;
+		bottom: @bottomInset;
+		left: @leftInset;
+	
+	}
+
+	.full (@inset: 0) {
+	
+		.fullInset(@inset, @inset, @inset, @inset);
 	
 	}
 
