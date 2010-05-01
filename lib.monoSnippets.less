@@ -81,7 +81,6 @@
 	height: @height;
 
 }
-
 	
 	.fullInset (@topInset: 0, @rightInset: @topInset, @bottomInset: @topInset, @leftInset: @leftInset) {
 
@@ -125,6 +124,8 @@
 	.threePartImage (@image: none, @borderLeftWidth: 0px, @borderRightWidth: 0px) {
 	
 		.borderImage(@image, 0, @borderRightWidth, 0, @borderLeftWidth, stretch, stretch);
+		border-left-width: 1px * @borderLeftWidth;
+		border-right-width: 1px * @borderRightWidth;
 	
 	}
 
