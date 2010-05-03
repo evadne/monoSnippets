@@ -42,7 +42,7 @@
 	border-radius: @radius @radius2 @radius3 @radius4;
 	-uu-border-radius: @radius @radius2 @radius3 @radius4;	
 
-	behavior: url(lib.monoSnippets.hack.borderRadius.htc);
+	behavior: url(lib.monoSnippets/lib.monoSnippets.hack.borderRadius.htc);
 
 }
 
@@ -244,9 +244,11 @@
 .delimitText {
 
 	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	overflow: hidden;	
 	-o-text-overflow: ellipsis;
+	ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	-moz-binding: url('lib.monoSnippets/lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
 
 }
 
