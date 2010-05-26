@@ -144,6 +144,17 @@
 
 }
 
+	.innerShadowed (@color: rgba(0, 0, 0, 1), @offsetX: 0px, @offsetY: 0px, @spread: 9px) {
+
+		-webkit-box-shadow: inset @offsetX @offsetY @spread @color;
+		-moz-box-shadow: inset @offsetX @offsetY @spread @color;
+		-o-box-shadow: inset @offsetX @offsetY @spread @color;
+		box-shadow: inset @offsetX @offsetY @spread @color;
+		
+		-uu-box-shadow: inset @offsetX @offsetY @spread @color;
+	
+	}
+
 	.doubleShadowed (@color01: rgba(0, 0, 0, 1), @offsetX01: 0px, @offsetY01: 0px, @spread01: 9px, @color02: @color01, @offsetX02: @offsetX01, @offsetY02: @offsetY01, @spread02: @spread01) {
 		
 		-webkit-box-shadow: @color01 @offsetX01 @offsetY01 @spread01, @color02 @offsetX02 @offsetY02 @spread02;
