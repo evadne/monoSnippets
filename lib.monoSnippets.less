@@ -371,3 +371,12 @@
 
 
 
+.gradientBackdropVertical (@fromColor: rgba(0, 0, 0, .1), @toColor: rgba(0, 0, 0, .5)) {
+
+	background-color: (@fromColor + @toColor) / 2;
+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @fromColor), color-stop(1, @toColor));
+	
+	background: -moz-linear-gradient(top left, @fromColor 0%, @toColor 100%);
+
+}
