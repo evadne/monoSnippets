@@ -104,6 +104,11 @@
 
 
 
+
+
+
+
+
 .borderImage (@image: none, @borderTopWidth: 0, @borderRightWidth: @borderTopWidth, @borderBottomWidth: @borderTopWidth, @borderLeftWidth: @borderTopWidth, @borderScaling: round) {
 
 	-o-border-image: @image @borderTopWidth @borderRightWidth @borderBottomWidth @borderLeftWidth @borderScaling @borderScaling;
@@ -143,6 +148,17 @@
 	-uu-box-shadow: @color @offsetX @offsetY @spread;
 
 }
+
+	.innerShadowed (@color: rgba(0, 0, 0, 1), @offsetX: 0px, @offsetY: 0px, @spread: 9px) {
+
+		-webkit-box-shadow: inset @offsetX @offsetY @spread @color;
+		-moz-box-shadow: inset @offsetX @offsetY @spread @color;
+		-o-box-shadow: inset @offsetX @offsetY @spread @color;
+		box-shadow: inset @offsetX @offsetY @spread @color;
+		
+		-uu-box-shadow: inset @offsetX @offsetY @spread @color;
+	
+	}
 
 	.doubleShadowed (@color01: rgba(0, 0, 0, 1), @offsetX01: 0px, @offsetY01: 0px, @spread01: 9px, @color02: @color01, @offsetX02: @offsetX01, @offsetY02: @offsetY01, @spread02: @spread01) {
 		
