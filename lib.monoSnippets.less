@@ -211,6 +211,17 @@
 		transition: all @duration linear;
 	
 	}
+	
+		.transition2 (@duration: 1s, @property1: all, @property2: property1) {
+		
+			.transition(@duration);
+			
+			-webkit-transition-property: @property1, @property2;
+			-moz-transition-property: @property1, @property2;
+			-o-transition-property: @property1, @property2;
+			transition-property: @property1, @property2;
+		
+		}
 
 
 
