@@ -98,6 +98,17 @@
 		.fullInset(@inset, @inset, @inset, @inset);
 	
 	}
+	
+	
+	
+	
+	
+	.pseudoBlock {
+	
+		content: "";
+		display: block;
+	
+	}
 
 
 
@@ -480,10 +491,10 @@
 
 	.glareSplitVertical (@height:36px) {
 	
-		content: "";
-		display: block;
+		.pseudoBlock;
+	
 		height: 0px;
-
+	
 		margin-top: .5 * @height - 1;
 		border-top: 1px solid rgba(0, 0, 0, .2);
 		border-bottom: 1px solid rgba(255, 255, 255, .45);
@@ -493,8 +504,8 @@
 	
 	.glareSplitHorizontal {
 	
-		content: "";
-		display: block;
+		.pseudoBlock;
+		
 		width: 0px;
 
 		margin-left: -1px;
@@ -506,8 +517,8 @@
 	
 		.glareSplitHorizontalReversed {
 		
-			content: "";
-			display: block;
+			.pseudoBlock;
+	
 			width: 0px;
 	
 			margin-left: -1px;
@@ -530,8 +541,7 @@
 	
 		.shadowUpBlock(@height: 4px) {
 		
-			content: "";
-			display: block;
+			.pseudoBlock;
 
 			position: relative;
 			top: @height;
@@ -561,12 +571,10 @@
 	
 		.shadowRightBlock(@width: 4px) {
 		
-			content: "";
-			display: block;
+			.pseudoBlock;
+			.shadowRight;
 			
 			width: @width;
-
-			.shadowRight;
 			
 			margin-left: 0px;
 			margin-right: 0px;
@@ -588,16 +596,14 @@
 	
 		.shadowDownBlock(@height: 4px) {
 		
-			content: "";
-			display: block;
-
+			.pseudoBlock;
+			.shadowDown;
+		
 			position: relative;
 			top: @height;
 			margin-top: -1 * @height;
 			
 			height: @height;
-
-			.shadowDown;
 			
 			margin-left: 0px;
 			margin-right: 0px;
@@ -619,13 +625,11 @@
 	
 		.shadowLeftBlock(@width: 4px) {
 		
-			content: "";
-			display: block;
-			
+			.pseudoBlock;
+			.shadowLeft;
+		
 			width: @width;
 
-			.shadowLeft;
-			
 			margin-left: 0px;
 			margin-right: 0px;
 			
