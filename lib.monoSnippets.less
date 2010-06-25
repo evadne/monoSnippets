@@ -197,7 +197,7 @@
 
 
 //	! 
-//	!Transitions
+//	!Transitions & Animations
 
 
 
@@ -222,6 +222,18 @@
 			transition-property: @property1, @property2;
 		
 		}
+	
+	
+	
+	
+	
+	.animation (@name: name, @duration: 1s, @count: infinite) {
+	
+		-webkit-animation-name: @name;
+		-webkit-animation-duration: @duration;
+		-webkit-animation-iteration-count: @count;
+	
+	}
 
 
 
