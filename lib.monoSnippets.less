@@ -2,7 +2,10 @@
 //	Evadne Wu at Iridia Productions.
 
 @slice: 9px;
+@sliceRaw: 9;
+
 @pack: 8 * @slice;
+@packRaw: 8 * @sliceRaw;
 
 
 
@@ -76,6 +79,18 @@
 		max-width: @maxWidth;
 	
 	}
+	
+	
+	
+	
+	
+	.height (@height: 144px, @minHeight: @height, @maxHeight: @height) {
+
+		height: @height;
+		min-height: @minHeight;
+		max-height: @minHeight;
+	
+	}
 
 
 
@@ -96,6 +111,16 @@
 	.full (@inset: 0) {
 	
 		.fullInset(@inset, @inset, @inset, @inset);
+	
+	}
+	
+	
+	
+	
+	
+	.margin (@topMargin: 0, @rightMargin: @topMargin, @bottomMargin: @topMargin, @leftMargin: @topMargin) {
+	
+		margin: @topMargin @rightMargin @bottomMargin @leftMargin;
 	
 	}
 	
