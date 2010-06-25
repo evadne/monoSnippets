@@ -303,11 +303,19 @@
 		
 	}
 	
-		.threePartImage (@image: none, @borderLeftWidth: 0px, @borderRightWidth: 0px) {
+		.threePartImage (@image: none, @borderLeftWidth: 0, @borderRightWidth: 0) {
 		
-			.borderImage(@image, 0, @borderRightWidth, 0, @borderLeftWidth, stretch, stretch);
+			.borderImage(@image, 0, @borderRightWidth, 0, @borderLeftWidth, stretch);
 			border-left-width: 1px * @borderLeftWidth;
 			border-right-width: 1px * @borderRightWidth;
+		
+		}
+		
+		.threePartImageVertical (@image: none, @borderTopWidth: 0, @borderBottomWidth: 0) {
+		
+			.borderImage(@image, 0, @borderTopWidth, 0, @borderBottomWidth, stretch);
+			border-top-width: 1px * @borderTopWidth;
+			border-bottom-width: 1px * @borderBottomWidth;
 		
 		}
 
