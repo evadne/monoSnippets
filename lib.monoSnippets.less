@@ -266,11 +266,12 @@
 	
 	
 	
-	.animation (@name: name, @duration: 1s, @count: infinite) {
+	.animation (@name: name, @duration: 1s, @count: infinite, @timingFunction: none) {
 	
 		-webkit-animation-name: @name;
 		-webkit-animation-duration: @duration;
 		-webkit-animation-iteration-count: @count;
+		-webkit-animation-timing-function: @timingFunction
 	
 	}
 
