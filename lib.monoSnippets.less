@@ -330,6 +330,48 @@
 			border-bottom-width: 1px * @borderBottomWidth;
 		
 		}
+	
+	
+	
+	
+	
+//	! 
+//	! Inset Borders
+
+	.borderInsetTop (@color: transparent, @width: 1px) {
+	
+		margin-top: -1 * @width;
+		border-top: @width solid @color;
+	
+	}
+
+	.borderInsetRight (@color: transparent, @width: 1px) {
+	
+		margin-right: -1 * @width;
+		border-right: @width solid @color;
+	
+	}
+
+	.borderInsetBottom (@color: transparent, @width: 1px) {
+	
+		margin-bottom: -1 * @width;
+		border-bottom: @width solid @color;
+	
+	}
+
+	.borderInsetLeft (@color: transparent, @width: 1px) {
+	
+		margin-left: -1 * @width;
+		border-left: @width solid @color;
+	
+	}
+	
+	.borderInset (@color: transparent, @width: 1px) {
+
+		border: @width solid @color;
+		margin: -1 * @width;
+	
+	}
 
 
 
@@ -401,12 +443,6 @@
 
 
 
-.bordered (@borderColor: white, @borderWidth: 1px) {
-
-	border: @borderWidth solid @borderColor;
-	margin: -1 * @borderWidth;
-
-}
 
 
 
