@@ -251,6 +251,17 @@
 	
 	}
 	
+		.transition1 (@duration: 1s, @property1: all) {
+		
+			.transition(@duration);
+			
+			-webkit-transition-property: @property1;
+			-moz-transition-property: @property1;
+			-o-transition-property: @property1;
+			transition-property: @property1;
+		
+		}
+	
 		.transition2 (@duration: 1s, @property1: all, @property2: property1) {
 		
 			.transition(@duration);
