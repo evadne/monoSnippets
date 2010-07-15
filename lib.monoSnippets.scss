@@ -1,0 +1,829 @@
+//	monoSnippets.scss
+//	Evadne Wu at Iridia Productions.
+
+$slice: 9px;
+$sliceRaw: 9;
+
+$pack: 8 * $slice;
+$packRaw: 8 * $sliceRaw;
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Box Model, Positioning & Geometry
+
+
+
+
+
+	@mixin inlineBlock {
+	
+	//	Mozilla Firefox
+		display: -moz-inline-stack;
+		
+	//	Nonquirkies
+		display: inline-block;
+	
+	//	IE
+		zoom: 1;
+		*display: inline;
+	
+	}
+
+
+
+
+
+	@mixin borderRadius ($radius: 4.5px, $radius2: $radius, $radius3: $radius, $radius4: $radius) {
+		
+		-webkit-border-top-left-radius: $radius;
+		-webkit-border-top-right-radius: $radius2;
+		-webkit-border-bottom-right-radius: $radius3;
+		-webkit-border-bottom-left-radius: $radius4;
+		
+		-moz-border-radius: $radius $radius2 $radius3 $radius4;
+		-o-border-radius: $radius $radius2 $radius3 $radius4;
+		border-radius: $radius $radius2 $radius3 $radius4;
+		-uu-border-radius: $radius $radius2 $radius3 $radius4;	
+	
+		behavior: url(lib.monoSnippets/lib.monoSnippets.hack.borderRadius.htc);
+	
+	}
+	
+	
+	
+	
+	
+	@mixin size ($width: 128px, $height: $width) {
+
+		width: $width;
+		height: $height;
+	
+	}
+	
+	
+	
+	
+		
+	@mixin width ($width: 144px, $minWidth: $width, $maxWidth: $width) {
+
+		width: $width;
+		min-width: $minWidth;
+		max-width: $maxWidth;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin height ($height: 144px, $minHeight: $height, $maxHeight: $height) {
+
+		height: $height;
+		min-height: $minHeight;
+		max-height: $maxHeight;
+	
+	}
+
+
+
+
+		
+	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $leftInset) {
+
+		display: block;
+		position: absolute;
+
+		top: $topInset;
+		right: $rightInset;
+		bottom: $bottomInset;
+		left: $leftInset;
+	
+	}
+	
+	@mixin full ($inset: 0) {
+	
+		@include fullInset($inset, $inset, $inset, $inset);
+	
+	}
+	
+	
+	
+	
+	
+	@mixin margin ($topMargin: 0, $rightMargin: $topMargin, $bottomMargin: $topMargin, $leftMargin: $topMargin) {
+	
+		margin: $topMargin $rightMargin $bottomMargin $leftMargin;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin pseudoBlock {
+	
+		content: "";
+		display: block;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Text & Typography
+
+
+
+
+
+	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit) {
+	
+		font-size: $fontSize;
+		line-height: $lineHeight;
+		color: $color;
+		
+	}
+	
+	
+	
+	
+	
+	@mixin textDelimited {
+
+		white-space: nowrap;
+		overflow: hidden;	
+		-o-text-overflow: ellipsis;
+		ms-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		-moz-binding: url('lib.monoSnippets/lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
+	
+	}
+	
+	
+	
+	
+	
+	@mixin textShadow ($color: rgba(255, 255, 255, .5), $offsetX: 0px, $offsetY: 1px, $spread: 0px) {
+
+		text-shadow: $color $offsetX $offsetY $spread;
+	
+	}
+
+	@mixin textShadowEngraved ($color: rgba(255, 255, 255, .5)) {
+	
+		text-shadow: $color 0px 1px 0px;
+	
+	}
+
+		@mixin textShadowEngraved2 {
+		
+			text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
+					rgba(0, 0, 0, .15) 0px -1px 0px;
+		
+		}
+	
+	
+	
+	
+	
+	@mixin textStroke ($color: transparent, $width: 1px) {
+
+		-webkit-text-stroke: $width $color;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin textPlaceholderColor ($color: rgba(0, 0, 0, .35)) {
+		
+		::-webkit-input-placeholder {
+		
+			color: $color;
+		
+		}
+	
+	}
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Transitions & Animations
+
+
+
+
+
+	@mixin transition ($duration: 1s) {
+	
+		-webkit-transition: all $duration linear;
+		-moz-transition: all $duration linear;
+		-o-transition: all $duration linear;
+		transition: all $duration linear;
+	
+	}
+	
+		@mixin transition1 ($duration: 1s, $property1: all) {
+		
+			@include transition($duration);
+			
+			-webkit-transition-property: $property1;
+			-moz-transition-property: $property1;
+			-o-transition-property: $property1;
+			transition-property: $property1;
+		
+		}
+	
+		@mixin transition2 ($duration: 1s, $property1: all, $property2: property1) {
+		
+			@include transition($duration);
+			
+			-webkit-transition-property: $property1, $property2;
+			-moz-transition-property: $property1, $property2;
+			-o-transition-property: $property1, $property2;
+			transition-property: $property1, $property2;
+		
+		}
+	
+	
+	
+	
+	
+	@mixin animation ($name: name, $duration: 1s, $count: infinite, $timingFunction: none) {
+	
+		-webkit-animation-name: $name;
+		-webkit-animation-duration: $duration;
+		-webkit-animation-iteration-count: $count;
+		-webkit-animation-timing-function: $timingFunction
+	
+	}
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Backdrops, Borders and 9-Slices
+
+	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round) {
+	
+		-o-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		-icab-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		-khtml-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		-moz-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		-webkit-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+	
+		border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		
+		border-top-width: 1px * $borderTopWidth;	
+		border-right-width: 1px * $borderRightWidth;
+		border-bottom-width: 1px * $borderBottomWidth;
+		border-left-width: 1px * $borderLeftWidth;
+		
+	}
+	
+		@mixin threePartImage ($image: none, $borderLeftWidth: 0, $borderRightWidth: 0) {
+		
+			@include borderImage($image, 0, $borderRightWidth, 0, $borderLeftWidth, stretch);
+			border-left-width: 1px * $borderLeftWidth;
+			border-right-width: 1px * $borderRightWidth;
+		
+		}
+		
+		@mixin threePartImageVertical ($image: none, $borderTopWidth: 0, $borderBottomWidth: 0) {
+		
+			@include borderImage($image, 0, $borderTopWidth, 0, $borderBottomWidth, stretch);
+			border-top-width: 1px * $borderTopWidth;
+			border-bottom-width: 1px * $borderBottomWidth;
+		
+		}
+	
+	
+	
+	
+	
+//	! 
+//	! Inset Borders
+
+	@mixin borderInsetTop ($color: transparent, $width: 1px) {
+	
+		margin-top: -1 * $width;
+		border-top: $width solid $color;
+	
+	}
+
+	@mixin borderInsetRight ($color: transparent, $width: 1px) {
+	
+		margin-right: -1 * $width;
+		border-right: $width solid $color;
+	
+	}
+
+	@mixin borderInsetBottom ($color: transparent, $width: 1px) {
+	
+		margin-bottom: -1 * $width;
+		border-bottom: $width solid $color;
+	
+	}
+
+	@mixin borderInsetLeft ($color: transparent, $width: 1px) {
+	
+		margin-left: -1 * $width;
+		border-left: $width solid $color;
+	
+	}
+	
+	@mixin borderInset ($color: transparent, $width: 1px) {
+
+		border: $width solid $color;
+		margin: -1 * $width;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Box Shadows
+
+	@mixin boxShadow ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
+	
+		-webkit-box-shadow: $color $offsetX $offsetY $spread;
+		-moz-box-shadow: $color $offsetX $offsetY $spread;
+		-o-box-shadow: $color $offsetX $offsetY $spread;
+		box-shadow: $color $offsetX $offsetY $spread;
+		
+		-uu-box-shadow: $color $offsetX $offsetY $spread;
+	
+	}
+	
+		@mixin boxShadowInner ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
+	
+			-webkit-box-shadow: inset $offsetX $offsetY $spread $color;
+			-moz-box-shadow: inset $offsetX $offsetY $spread $color;
+			-o-box-shadow: inset $offsetX $offsetY $spread $color;
+			box-shadow: inset $offsetX $offsetY $spread $color;
+			
+			-uu-box-shadow: inset $offsetX $offsetY $spread $color;
+		
+		}
+	
+		@mixin boxShadow2 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01) {
+			
+			-webkit-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
+			-moz-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
+			-o-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
+			box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
+			
+			-uu-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
+		
+		}
+		
+		@mixin boxShadow3 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01, $color03: $color01, $offsetX03: $offsetX01, $offsetY03: $offsetY01, $spread03: $spread01) {
+			
+			-webkit-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
+			-moz-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
+			-o-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
+			box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
+			
+			-uu-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
+		
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Transformations
+
+
+
+
+
+	@mixin transformRotate ($degrees: 0deg, $originX: 50%, $originY: 50%) {
+	
+		-webkit-transform: rotate($degrees);
+		-webkit-transform-origin: $originX $originY;
+
+		-moz-transform: rotate($degrees);
+		-moz-transform-origin: $originX $originY;
+
+		-o-transform: rotate($degrees);
+		-o-transform-origin: $originX $originY;
+
+		transform: rotate($degrees);
+		transform-origin: $originX $originY;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Custom Browser UI
+
+	@mixin uiScrollbar ($unitSize: 9px, $trackColor:rgba(0, 0, 0, .15), $thumbColor:rgba(0, 0, 0, .25), $hoverColor:rgba(0, 0, 0, .35)) {
+
+		::-webkit-scrollbar,
+		::-webkit-scrollbar-button:start:increment,
+		::-webkit-scrollbar-button:start:decrement,
+		::-webkit-scrollbar-button:end:increment,
+		::-webkit-scrollbar-button:end:decrement {
+		
+			width: $unitSize;
+			height: $unitSize;
+			display: none;
+		
+		}
+		
+		::-webkit-scrollbar {
+		
+			display: block;
+			    
+		}
+		
+		::-webkit-scrollbar-track {
+		
+			@include borderRadius(0.5 * $unitSize);
+			background: rgba(0, 0, 0, 0);
+			
+			:disabled {
+			
+				display: none;
+			
+			}
+		
+		}
+		
+		::-webkit-scrollbar-thumb {
+		
+			@include borderRadius(0.5 * $unitSize);
+			background: rgba(0, 0, 0, .25);
+			border: 1px inset rgba(0, 0, 0, .15);
+			
+			-webkit-transition: background-color 2.5s linear;
+		
+		}
+		
+		:hover::-webkit-scrollbar-thumb {
+		
+			background: rgba(0, 0, 0, .35);
+		
+		}
+		
+		::-webkit-scrollbar-thumb:hover {
+		
+			background: rgba(0, 0, 0, .55);
+		
+		}
+	
+	}
+	
+
+
+
+
+
+
+
+
+
+//	! 
+//	! Overriding UA Behaviors
+
+
+
+
+
+	@mixin uaDisableSelection {
+	
+		-webkit-user-select: none;
+		-moz-user-select: none; 
+		user-select: none; 
+	
+	}
+	
+	@mixin uaDisableTextZoom {
+	
+		-webkit-text-size-adjust: none;
+		-moz-text-size-adjust: none;
+		text-size-adjust: none;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Gradients and Glares
+
+
+
+
+
+	@mixin gradientBackdropVertical ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
+	
+		background-color: transparentize(
+		
+			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
+			(alpha($fromColor) + alpha($toColor)) / 2
+			
+		);
+	
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $fromColor), color-stop(1, $toColor));
+		background: -moz-linear-gradient(top, $fromColor 0%, $toColor 100%);
+	
+	}
+	
+	
+	
+	
+	
+	@mixin gradientBackdropHorizontal ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
+	
+		background-color: ($fromColor + $toColor) / 2;
+	
+		background: -webkit-gradient(linear, left top, right top, color-stop(0, $fromColor), color-stop(1, $toColor));
+		background: -moz-linear-gradient(left, $fromColor 0%, $toColor 100%);
+	
+	}
+
+
+
+
+
+	@mixin glareSplitVertical ($height:36px) {
+	
+		@include pseudoBlock;
+	
+		height: 0px;
+	
+		margin-top: .5 * $height - 1;
+		border-top: 1px solid rgba(0, 0, 0, .2);
+		border-bottom: 1px solid rgba(255, 255, 255, .45);
+		margin-bottom: .5 * $height - 1;
+			
+	}
+	
+	@mixin glareSplitHorizontal {
+	
+		@include pseudoBlock;
+		
+		width: 0px;
+
+		margin-left: -1px;
+		border-left: 1px solid rgba(0, 0, 0, .2);
+		border-right: 1px solid rgba(255, 255, 255, .45);
+		margin-right: -1px;
+			
+	}
+	
+		@mixin glareSplitHorizontalReversed {
+		
+			@include pseudoBlock;
+	
+			width: 0px;
+	
+			margin-left: -1px;
+			border-left: 1px solid rgba(255, 255, 255, .45);
+			border-right: 1px solid rgba(0, 0, 0, .2);
+			margin-right: -1px;
+				
+		}
+	
+	
+	
+	
+	
+	@mixin shadowUp {
+	
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0, 0)), color-stop(1, rgba(0,0,0, 1)));
+		background: -moz-linear-gradient(center top, rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 100%);
+	
+	}
+	
+		@mixin shadowUpBlock($height: 4px) {
+		
+			@include pseudoBlock;
+
+			position: relative;
+			top: $height;
+			margin-top: -1 * $height;
+			
+			height: $height;
+
+			@include shadowUp;
+			
+			margin-left: 0px;
+			margin-right: 0px;
+			
+			opacity: .35;
+
+		}
+	
+	
+	
+	
+	
+	@mixin shadowRight {
+	
+		background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0,0,0, 1)), color-stop(1, rgba(0,0,0, 0)));
+		background: -moz-linear-gradient(center left, rgba(0,0,0, 1) 0%, rgba(0,0,0, 0) 100%);
+	
+	}
+	
+		@mixin shadowRightBlock($width: 4px) {
+		
+			@include pseudoBlock;
+			@include shadowRight;
+			
+			width: $width;
+			
+			margin-left: 0px;
+			margin-right: 0px;
+			
+			opacity: .35;
+
+		}
+	
+	
+	
+	
+	
+	@mixin shadowDown {
+	
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0, 1)), color-stop(1, rgba(0,0,0, 0)));
+		background: -moz-linear-gradient(center top, rgba(0,0,0, 1) 0%, rgba(0,0,0, 0) 100%);
+	
+	}
+	
+		@mixin shadowDownBlock($height: 4px) {
+		
+			@include pseudoBlock;
+			@include shadowDown;
+		
+			position: relative;
+			top: $height;
+			margin-top: -1 * $height;
+			
+			height: $height;
+			
+			margin-left: 0px;
+			margin-right: 0px;
+			
+			opacity: .35;
+
+		}
+	
+	
+	
+	
+	
+	@mixin shadowLeft {
+	
+		background: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(0,0,0, 1)), color-stop(1, rgba(0,0,0, 0)));
+		background: -moz-linear-gradient(center right, rgba(0,0,0, 1) 0%, rgba(0,0,0, 0) 100%);
+	
+	}
+	
+		@mixin shadowLeftBlock($width: 4px) {
+		
+			@include pseudoBlock;
+			@include shadowLeft;
+		
+			width: $width;
+
+			margin-left: 0px;
+			margin-right: 0px;
+			
+			opacity: .35;
+
+		}
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Misc
+
+
+
+
+
+	@mixin link {
+		
+		cursor: pointer;
+	
+	}
+
+
+
+
+
+
+
+
+
