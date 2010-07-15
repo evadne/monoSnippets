@@ -338,38 +338,18 @@ $packRaw: 8 * $sliceRaw;
 //	! 
 //	! Inset Borders
 
-	@mixin borderInsetTop ($color: transparent, $width: 1px) {
+	@mixin borderInset ($side: "", $color: transparent, $width: 1px) {
 	
-		margin-top: -1 * $width;
-		border-top: $width solid $color;
+		$prefix: "-";
 	
-	}
-
-	@mixin borderInsetRight ($color: transparent, $width: 1px) {
-	
-		margin-right: -1 * $width;
-		border-right: $width solid $color;
-	
-	}
-
-	@mixin borderInsetBottom ($color: transparent, $width: 1px) {
-	
-		margin-bottom: -1 * $width;
-		border-bottom: $width solid $color;
-	
-	}
-
-	@mixin borderInsetLeft ($color: transparent, $width: 1px) {
-	
-		margin-left: -1 * $width;
-		border-left: $width solid $color;
-	
-	}
-	
-	@mixin borderInset ($color: transparent, $width: 1px) {
-
-		border: $width solid $color;
-		margin: -1 * $width;
+		@if ($side == "") {
+		
+			$prefix: "";
+		
+		}
+		
+		margin#{$prefix}#{$side}: -1 * $width;
+		border#{$prefix}#{$side}: $width solid $color;
 	
 	}
 
