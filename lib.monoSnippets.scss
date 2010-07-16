@@ -7,6 +7,8 @@ $sliceRaw: 9;
 $pack: 8 * $slice;
 $packRaw: 8 * $sliceRaw;
 
+$monoSnippetsDirectory: "lib.monoSnippets/" !default;
+
 
 
 
@@ -175,7 +177,7 @@ $packRaw: 8 * $sliceRaw;
 		-o-text-overflow: ellipsis;
 		ms-text-overflow: ellipsis;
 		text-overflow: ellipsis;
-		-moz-binding: url('lib.monoSnippets/lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
+		-moz-binding: url($monoSnippetsDirectory + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
 	
 	}
 	
