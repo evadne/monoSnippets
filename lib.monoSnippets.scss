@@ -220,7 +220,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	@mixin textPlaceholderColor ($color: rgba(0, 0, 0, .35)) {
 		
-		::-webkit-input-placeholder {
+		&::-webkit-input-placeholder {
 		
 			color: $color;
 		
@@ -487,11 +487,11 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin uiScrollbar ($unitSize: 9px, $trackColor:rgba(0, 0, 0, .15), $thumbColor:rgba(0, 0, 0, .25), $hoverColor:rgba(0, 0, 0, .35)) {
 
-		::-webkit-scrollbar,
-		::-webkit-scrollbar-button:start:increment,
-		::-webkit-scrollbar-button:start:decrement,
-		::-webkit-scrollbar-button:end:increment,
-		::-webkit-scrollbar-button:end:decrement {
+		&::-webkit-scrollbar,
+		&::-webkit-scrollbar-button:start:increment,
+		&::-webkit-scrollbar-button:start:decrement,
+		&::-webkit-scrollbar-button:end:increment,
+		&::-webkit-scrollbar-button:end:decrement {
 		
 			width: $unitSize;
 			height: $unitSize;
@@ -499,13 +499,13 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		}
 		
-		::-webkit-scrollbar {
+		&::-webkit-scrollbar {
 		
 			display: block;
 			    
 		}
 		
-		::-webkit-scrollbar-track {
+		&::-webkit-scrollbar-track {
 		
 			@include borderRadius(0.5 * $unitSize);
 			background: rgba(0, 0, 0, 0);
@@ -518,7 +518,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		}
 		
-		::-webkit-scrollbar-thumb {
+		&::-webkit-scrollbar-thumb {
 		
 			@include borderRadius(0.5 * $unitSize);
 			background: rgba(0, 0, 0, .25);
@@ -528,13 +528,13 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		}
 		
-		:hover::-webkit-scrollbar-thumb {
+		&:hover::-webkit-scrollbar-thumb {
 		
 			background: rgba(0, 0, 0, .35);
 		
 		}
 		
-		::-webkit-scrollbar-thumb:hover {
+		&::-webkit-scrollbar-thumb:hover {
 		
 			background: rgba(0, 0, 0, .55);
 		
