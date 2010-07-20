@@ -23,10 +23,11 @@ a {
   font-weight: inherit;
   font-style: inherit;
 }
-input {
+input, textarea, button {
   border: none;
   outline: none;
   background: none;
-  padding: 0;
+  padding: 0px;
+  margin: 0px;
 }
 abbr, article, aside, audio, canvas, details, figcaption, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, summary, time, video { display: block; }
