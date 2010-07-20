@@ -354,6 +354,39 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		border#{$prefix}#{$side}: $width solid $color;
 	
 	}
+	
+	@mixin borderInsetSolid ($color: transparent, $width: 1px) {
+	
+		-webkit-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+		-moz-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+		-o-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+		box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+		
+		-uu-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+	
+	}
+	
+		@mixin borderInsetSolid2 ($color01: transparent, $width01: 1px, $color02: transparent, $width02: 1px) {
+		
+			-webkit-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+			-moz-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+			-o-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+			box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+			
+			-uu-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+		
+		}
+		
+		@mixin borderInsetSolidEngraved ($color: transparent, $width: 1px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
+	
+			-webkit-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			-moz-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			-o-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			
+			-uu-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+		
+		}
 
 
 
