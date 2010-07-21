@@ -98,7 +98,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 		
-	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $leftInset) {
+	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $topInset) {
 
 		display: block;
 		position: absolute;
