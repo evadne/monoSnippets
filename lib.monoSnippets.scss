@@ -633,6 +633,37 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 
+	@mixin gradientBackdrop ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5), $fromTop: 0%, $fromLeft: 0%, $toTop: 100%, $toLeft: 0%) {
+	
+		@if $fromColor == transparent {
+		
+			$fromColor: rgba(0, 0, 0, 0);
+		
+		}
+		
+		@if $toColor == transparent {
+		
+			$toColor: rgba(0, 0, 0, 0);
+		
+		}
+	
+		background-color: transparentize(
+		
+			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
+			(alpha($fromColor) + alpha($toColor)) / 2
+			
+		);
+	
+		background: -webkit-gradient(linear, $fromTop $fromLeft, $toTop $toLeft, color-stop(0, $fromColor), color-stop(1, $toColor));
+		
+		background: -moz-linear-gradient($fromTop $fromLeft, $fromColor, $toColor $toTop $toLeft);
+	
+	}
+	
+	
+	
+	
+	
 	@mixin gradientBackdropVertical ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
 	
 		background-color: transparentize(
