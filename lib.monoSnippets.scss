@@ -432,6 +432,17 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 			-uu-box-shadow: inset $offsetX $offsetY $spread $color;
 		
 		}
+
+			@mixin boxShadowInnerEngraved ($innerShdowColor: rgba(0, 0, 0, 1), $innerShdowOffsetX: 0px, $innerShdowOffsetY: 0px, $innerShdowSpread: 9px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
+		
+				-webkit-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+				-moz-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+				-o-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+				box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+				
+				-uu-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			
+			}
 	
 		@mixin boxShadow2 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01) {
 			
