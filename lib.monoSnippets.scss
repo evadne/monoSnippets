@@ -244,12 +244,12 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 
-	@mixin transition ($duration: 1s) {
+	@mixin transition ($duration: 1s, $timingFunction: linear) {
 	
-		-webkit-transition: all $duration linear;
-		-moz-transition: all $duration linear;
-		-o-transition: all $duration linear;
-		transition: all $duration linear;
+		-webkit-transition: all $duration $timingFunction;
+		-moz-transition: all $duration $timingFunction;
+		-o-transition: all $duration $timingFunction;
+		transition: all $duration $timingFunction;
 	
 	}
 	
