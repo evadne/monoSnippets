@@ -366,6 +366,17 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	}
 	
+		@mixin borderInsetSolidShadowed ($borderColor: transparent, $borderWidth: 1px, $shadowColor: rgba(0, 0, 0, 1), $shadowOffsetX: 0px, $shadowOffsetY: 0px, $shadowSpread: 9px) {
+	
+			-webkit-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+			-moz-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+			-o-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+			box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+			
+			-uu-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+		
+		}
+	
 		@mixin borderInsetSolid2 ($color01: transparent, $width01: 1px, $color02: transparent, $width02: 1px) {
 		
 			-webkit-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
