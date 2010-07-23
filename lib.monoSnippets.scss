@@ -235,6 +235,21 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		}
 	
 	}
+	
+	
+	
+	
+	
+	@mixin textSelectionColor ($backgroundColor: rgba(0, 0, 0, .5), $highlightColor: white) {
+	
+		::selection, ::-moz-selection, ::-webkit-selection {
+		
+			background-color: $backgroundColor;
+			color: $highlightColor;
+		
+		}
+	
+	}
 
 
 
