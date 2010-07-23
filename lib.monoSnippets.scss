@@ -158,11 +158,19 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 
-	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit) {
+	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit, $important: no) {
 	
 		font-size: $fontSize;
 		line-height: $lineHeight;
 		color: $color;
+		
+		@if $important == important {
+		
+			font-size: $fontSize !important;
+			line-height: $lineHeight !important;
+			color: $color !important;
+		
+		} 
 		
 	}
 	
