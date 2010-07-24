@@ -355,13 +355,123 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 			border-bottom-width: 1px * $borderBottomWidth;
 		
 		}
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Box Shadow Literals
+
+	@mixin boxShadowWithLiteral ($literal01: "", $literal02: "", $literal03: "", $literal04: "", $literal05: "", $literal06: "", $literal07: "", $literal08: "") {
+	
+		$concatnatedString: $literal01;
+		
+		@if $literal02 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal02};	}
+		@if $literal03 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal03};	}
+		@if $literal04 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal04};	}
+		@if $literal05 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal05};	}
+		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}	
+		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}	
+		@if $literal08 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal08};	}
+
+		-webkit-box-shadow: $concatnatedString;
+		-moz-box-shadow: $concatnatedString;
+		-o-box-shadow: $concatnatedString;	
+		box-shadow: $concatnatedString;
+		-uu-box-shadow: $concatnatedString;
+	
+	}
+	
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Box Shadows
+
+	@mixin boxShadow ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
+	
+		@include boxShadowWithLiteral(
+			
+			$offsetX $offsetY $spread $color
+			
+		);
+	
+	}
+	
+		@mixin boxShadowInner ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
+	
+			@include boxShadowWithLiteral(
+			
+				inset $offsetX $offsetY $spread $color
+			
+			);
+		
+		}
+		
+			@mixin boxShadowInnerEngraved ($shadowColor: rgba(0, 0, 0, 1), $shadowOffsetX: 0px, $shadowOffsetY: 0px, $shadowSpread: 9px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
+		
+		
+				@include boxShadowWithLiteral(
+				
+					inset $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor, 
+					0px -1px 0px $colorTopEngrave, 
+					0px 1px 0px $colorBottomEngrave
+				
+				);
+				
+			}
+	
+		@mixin boxShadow2 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01) {
+			
+			@include boxShadowWithLiteral(
+			
+				$color01 $offsetX01 $offsetY01 $spread01, 
+				$color02 $offsetX02 $offsetY02 $spread02
+			
+			);
+		
+		}
+		
+		@mixin boxShadow3 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01, $color03: $color01, $offsetX03: $offsetX01, $offsetY03: $offsetY01, $spread03: $spread01) {
+		
+			@include boxShadowWithLiteral(
+			
+				$color01 $offsetX01 $offsetY01 $spread01, 
+				$color02 $offsetX02 $offsetY02 $spread02, 
+				$color03 $offsetX03 $offsetY03 $spread03
+			
+			);
+		
+		}
+	
+	
+	
+	
+	
+	
+
+
+
+
 	
 	
 	
 	
 	
 //	! 
-//	! Inset Borders
+//	! Inset Borders & Faux Inset Borders
 
 	@mixin borderInset ($side: "", $color: transparent, $width: 1px) {
 	
@@ -380,124 +490,77 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	@mixin borderInsetSolid ($color: transparent, $width: 1px) {
 	
-		-webkit-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
-		-moz-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
-		-o-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
-		box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+		@include boxShadowWithLiteral(
 		
-		-uu-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color;
+			inset 0px $width 0px $color, 
+			inset 0px (-1 * $width) 0px $color, 
+			inset $width 0px 0px $color, 
+			inset (-1 * $width) 0px 0px $color
+			
+		);
 	
 	}
 	
 		@mixin borderInsetSolidShadowed ($borderColor: transparent, $borderWidth: 1px, $shadowColor: rgba(0, 0, 0, 1), $shadowOffsetX: 0px, $shadowOffsetY: 0px, $shadowSpread: 9px) {
 	
-			-webkit-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
-			-moz-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
-			-o-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
-			box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+			@include boxShadowWithLiteral(
 			
-			-uu-box-shadow: inset 0px $borderWidth 0px $borderColor, inset 0px (-1 * $borderWidth) 0px $borderColor, inset $borderWidth 0px 0px $borderColor, inset (-1 * $borderWidth) 0px 0px $borderColor, $shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor;
+				inset 0px $borderWidth 0px $borderColor,
+				inset 0px (-1 * $borderWidth) 0px $borderColor,
+				inset $borderWidth 0px 0px $borderColor,
+				inset (-1 * $borderWidth) 0px 0px $borderColor,
+				$shadowOffsetX $shadowOffsetY $shadowSpread $shadowColor
+						
+			);
 		
 		}
+		
+			@mixin borderInsetSolidShadowed2 ($borderColor: transparent, $borderWidth: 1px, $shadowColor01: rgba(0, 0, 0, 1), $shadowOffsetX01: 0px, $shadowOffsetY01: 0px, $shadowSpread01: 9px, $shadowColor02: rgba(0, 0, 0, 1), $shadowOffsetX02: 0px, $shadowOffsetY02: 0px, $shadowSpread02: 9px) {
+	
+				@include boxShadowWithLiteral(
+				
+					inset 0px $borderWidth 0px $borderColor, 
+					inset 0px (-1 * $borderWidth) 0px $borderColor, 
+					inset $borderWidth 0px 0px $borderColor, 
+					inset (-1 * $borderWidth) 0px 0px $borderColor, 
+					$shadowOffsetX01 $shadowOffsetY01 $shadowSpread01 $shadowColor01, 
+					$shadowOffsetX02 $shadowOffsetY02 $shadowSpread02 $shadowColor02
+					
+				);
+			
+			}
 	
 		@mixin borderInsetSolid2 ($color01: transparent, $width01: 1px, $color02: transparent, $width02: 1px) {
 		
-			-webkit-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
-			-moz-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
-			-o-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
-			box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
+			@include boxShadowWithLiteral(
 			
-			-uu-box-shadow: inset 0px $width01 0px $color01, inset 0px (-1 * $width01) 0px $color01, inset $width01 0px 0px $color01, inset (-1 * $width01) 0px 0px $color01, inset 0px $width02 0px $color02, inset 0px (-1 * $width02) 0px $color02, inset $width02 0px 0px $color02, inset (-1 * $width02) 0px 0px $color02;
-		
+				inset 0px $width01 0px $color01, 
+				inset 0px (-1 * $width01) 0px $color01,
+				inset $width01 0px 0px $color01,
+				inset (-1 * $width01) 0px 0px $color01,
+				inset 0px $width02 0px $color02,
+				inset 0px (-1 * $width02) 0px $color02,
+				inset $width02 0px 0px $color02,
+				inset (-1 * $width02) 0px 0px $color02
+				
+			);
+					
 		}
 		
 		@mixin borderInsetSolidEngraved ($color: transparent, $width: 1px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
 	
-			-webkit-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-			-moz-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-			-o-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-			box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+			@include boxShadowWithLiteral(
 			
-			-uu-box-shadow: inset 0px $width 0px $color, inset 0px (-1 * $width) 0px $color, inset $width 0px 0px $color, inset (-1 * $width) 0px 0px $color, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
+				inset 0px $width 0px $color,
+				inset 0px (-1 * $width) 0px $color,
+				inset $width 0px 0px $color,
+				inset (-1 * $width) 0px 0px $color,
+				0px -1px 0px $colorTopEngrave,
+				0px 1px 0px $colorBottomEngrave
+					
+			);
 		
 		}
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Box Shadows
-
-	@mixin boxShadow ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
-	
-		-webkit-box-shadow: $color $offsetX $offsetY $spread;
-		-moz-box-shadow: $color $offsetX $offsetY $spread;
-		-o-box-shadow: $color $offsetX $offsetY $spread;
-		box-shadow: $color $offsetX $offsetY $spread;
-		
-		-uu-box-shadow: $color $offsetX $offsetY $spread;
-	
-	}
-	
-		@mixin boxShadowInner ($color: rgba(0, 0, 0, 1), $offsetX: 0px, $offsetY: 0px, $spread: 9px) {
-	
-			-webkit-box-shadow: inset $offsetX $offsetY $spread $color;
-			-moz-box-shadow: inset $offsetX $offsetY $spread $color;
-			-o-box-shadow: inset $offsetX $offsetY $spread $color;
-			box-shadow: inset $offsetX $offsetY $spread $color;
-			
-			-uu-box-shadow: inset $offsetX $offsetY $spread $color;
-		
-		}
-
-			@mixin boxShadowInnerEngraved ($innerShdowColor: rgba(0, 0, 0, 1), $innerShdowOffsetX: 0px, $innerShdowOffsetY: 0px, $innerShdowSpread: 9px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
-		
-				-webkit-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-				-moz-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-				-o-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-				box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-				
-				-uu-box-shadow: inset $innerShdowOffsetX $innerShdowOffsetY $innerShdowSpread $innerShdowColor, 0px -1px 0px $colorTopEngrave, 0px 1px 0px $colorBottomEngrave;
-			
-			}
-	
-		@mixin boxShadow2 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01) {
-			
-			-webkit-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
-			-moz-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
-			-o-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
-			box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
-			
-			-uu-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02;
-		
-		}
-		
-		@mixin boxShadow3 ($color01: rgba(0, 0, 0, 1), $offsetX01: 0px, $offsetY01: 0px, $spread01: 9px, $color02: $color01, $offsetX02: $offsetX01, $offsetY02: $offsetY01, $spread02: $spread01, $color03: $color01, $offsetX03: $offsetX01, $offsetY03: $offsetY01, $spread03: $spread01) {
-			
-			-webkit-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
-			-moz-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
-			-o-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
-			box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
-			
-			-uu-box-shadow: $color01 $offsetX01 $offsetY01 $spread01, $color02 $offsetX02 $offsetY02 $spread02, $color03 $offsetX03 $offsetY03 $spread03;
-		
-		}
-
-
-
-
-
-
-
-
-
-
 
 
 
