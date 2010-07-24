@@ -803,44 +803,47 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 
-	@mixin glareSplitVertical ($height:36px) {
+	@mixin glareSplitVertical ($height: 36px, $reversed: no, $colorTopEngrave: rgba(0, 0, 0, .2), $colorBottomEngrave: rgba(255, 255, 255, .45)) {
 	
 		@include pseudoBlock;
 	
 		height: 0px;
 	
 		margin-top: .5 * $height - 1;
-		border-top: 1px solid rgba(0, 0, 0, .2);
-		border-bottom: 1px solid rgba(255, 255, 255, .45);
 		margin-bottom: .5 * $height - 1;
+		
+		border-top: 1px solid $colorTopEngrave;
+		border-bottom: 1px solid $colorBottomEngrave;
+		
+		@if $reversed != no {
+		
+			border-top-color: $colorBottomEngrave;
+			border-bottom-color: $colorTopEngrave;
+		
+		}
 			
 	}
 	
-	@mixin glareSplitHorizontal {
+	@mixin glareSplitHorizontal ($reversed: no, $width: 18px, $colorLeftEngrave: rgba(0, 0, 0, .2), $colorRightEngrave: rgba(255, 255, 255, .45)) {
 	
 		@include pseudoBlock;
 		
 		width: 0px;
 
-		margin-left: -1px;
-		border-left: 1px solid rgba(0, 0, 0, .2);
-		border-right: 1px solid rgba(255, 255, 255, .45);
-		margin-right: -1px;
+		margin-left: .5 * $width - 1;
+		margin-right: .5 * $width - 1;
+		
+		border-left: 1px solid $colorLeftEngrave;
+		border-right: 1px solid $colorRightEngrave;
+		
+		@if $reversed != no {
+		
+			border-left-color: $colorRightEngrave;
+			border-right-color: $colorLeftEngrave;
+		
+		}
 			
 	}
-	
-		@mixin glareSplitHorizontalReversed {
-		
-			@include pseudoBlock;
-	
-			width: 0px;
-	
-			margin-left: -1px;
-			border-left: 1px solid rgba(255, 255, 255, .45);
-			border-right: 1px solid rgba(0, 0, 0, .2);
-			margin-right: -1px;
-				
-		}
 	
 	
 	
