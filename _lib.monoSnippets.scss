@@ -521,7 +521,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		}
 		
-			@mixin borderInsetSolidShadowed2 ($borderColor: transparent, $borderWidth: 1px, $shadowColor01: rgba(0, 0, 0, 1), $shadowOffsetX01: 0px, $shadowOffsetY01: 0px, $shadowSpread01: 9px, $shadowColor02: rgba(0, 0, 0, 1), $shadowOffsetX02: 0px, $shadowOffsetY02: 0px, $shadowSpread02: 9px) {
+			@mixin borderInsetSolidShadowed2 ($borderColor: transparent, $borderWidth: 1px, $shadowColor01: rgba(0, 0, 0, 1), $shadowOffsetX01: 0px, $shadowOffsetY01: 0px, $shadowSpread01: 9px, $shadowInsetOrEmpty01: "", $shadowColor02: rgba(0, 0, 0, 1), $shadowOffsetX02: 0px, $shadowOffsetY02: 0px, $shadowSpread02: 9px, $shadowInsetOrEmpty02: "") {
 	
 				@include boxShadowWithLiteral(
 				
@@ -529,8 +529,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 					inset 0px (-1 * $borderWidth) 0px $borderColor, 
 					inset $borderWidth 0px 0px $borderColor, 
 					inset (-1 * $borderWidth) 0px 0px $borderColor, 
-					$shadowOffsetX01 $shadowOffsetY01 $shadowSpread01 $shadowColor01, 
-					$shadowOffsetX02 $shadowOffsetY02 $shadowSpread02 $shadowColor02
+					#{$shadowInsetOrEmpty01} $shadowOffsetX01 $shadowOffsetY01 $shadowSpread01 $shadowColor01, 
+					#{$shadowInsetOrEmpty02} $shadowOffsetX02 $shadowOffsetY02 $shadowSpread02 $shadowColor02
 					
 				);
 			
