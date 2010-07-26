@@ -798,6 +798,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 			$toColor: rgba(0, 0, 0, 0);
 		
 		}
+		
+		background-color: (opacify($fromColor, 1) + opacify($toColor, 1)) / 2;
 	
 		background-color: transparentize(
 		
