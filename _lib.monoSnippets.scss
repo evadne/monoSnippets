@@ -446,6 +446,20 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		}
 		
+			@mixin boxShadowInnerSolidOutset ($insetColor: transparent, $insetOffsetX: 0px, $insetOffsetY: 0px, $insetSpread: 9px, $outsetColor: transparent, $outsetWidth: 1px) {
+	
+				@include boxShadowWithLiteral(
+				
+					inset $insetOffsetX $insetOffsetY $insetSpread $insetColor,
+					0px $outsetWidth 0px $outsetColor, 
+					0px (-1 * $outsetWidth) 0px $outsetColor, 
+					$outsetWidth 0px 0px $outsetColor, 
+					(-1 * $outsetWidth) 0px 0px $outsetColor
+				
+				);
+			
+			}
+		
 			@mixin boxShadowInnerEngraved ($shadowColor: rgba(0, 0, 0, 1), $shadowOffsetX: 0px, $shadowOffsetY: 0px, $shadowSpread: 9px, $colorTopEngrave: transparent, $colorBottomEngrave: transparent) {
 		
 		
