@@ -390,7 +390,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 //	! 
 //	!Box Shadow Literals
 
-	@mixin boxShadowWithLiteral ($literal01: "", $literal02: "", $literal03: "", $literal04: "", $literal05: "", $literal06: "", $literal07: "", $literal08: "") {
+	@mixin boxShadowWithLiteral ($literal01: "", $literal02: "", $literal03: "", $literal04: "", $literal05: "", $literal06: "", $literal07: "", $literal08: "", $literal09: "", $literal10: "", $literal11: "", $literal12: "") {
 	
 		$concatnatedString: $literal01;
 		
@@ -401,6 +401,10 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}	
 		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}	
 		@if $literal08 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal08};	}
+		@if $literal09 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal09};	}
+		@if $literal10 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal10};	}
+		@if $literal11 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal11};	}
+		@if $literal12 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal12};	}
 
 		-webkit-box-shadow: $concatnatedString;
 		-moz-box-shadow: $concatnatedString;
