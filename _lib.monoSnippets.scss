@@ -142,6 +142,22 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		display: block;
 	
 	}
+	
+	
+	
+	
+	
+	@mixin anchoredToEdgeWithContextWidth ($anchoringEdge: "right", $contextWidth: 960px) {
+	
+	//	Aligns the element within a 100%-width element to an imaginary left or right boundry.
+	
+		position: absolute;
+		@include fullInset(auto);
+		
+		#{$anchoringEdge}: 50%;
+		margin-#{$anchoringEdge}: -0.5 * $contextWidth;
+	
+	}
 
 
 
