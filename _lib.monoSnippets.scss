@@ -527,6 +527,39 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	}
 	
+		@mixin borderInsetSolidOutset ($insetColor: transparent, $insetWidth: 1px, $outsetColor: transparent, $outsetWidth: 1px, $removeEdges: "") {
+	
+			$horizontal: 1;
+			$vertical: 1;
+	
+			@if $removeEdges == "horizontal" {
+			
+				$vertical: 0;
+			
+			}
+			
+			@if $removeEdges == "vertical" {
+			
+				$horizontal: 0;
+			
+			}
+	
+			@include boxShadowWithLiteral(
+			
+				inset 0px ($vertical * $insetWidth) 0px $insetColor, 
+				inset 0px (-1 * $vertical * $insetWidth) 0px $insetColor, 
+				inset ($horizontal * $insetWidth) 0px 0px $insetColor, 
+				inset (-1 * $horizontal * $insetWidth) 0px 0px $insetColor,
+				
+				0px ($vertical * $outsetWidth) 0px $outsetColor, 
+				0px (-1 * $vertical * $outsetWidth) 0px $outsetColor, 
+				($horizontal * $outsetWidth) 0px 0px $outsetColor, 
+				(-1 * $horizontal * $outsetWidth) 0px 0px $outsetColor
+				
+			);
+		
+		}
+	
 		@mixin borderInsetSolidShadowed ($borderColor: transparent, $borderWidth: 1px, $shadowColor: rgba(0, 0, 0, 1), $shadowOffsetX: 0px, $shadowOffsetY: 0px, $shadowSpread: 9px) {
 	
 			@include boxShadowWithLiteral(
