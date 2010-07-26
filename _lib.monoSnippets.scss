@@ -7,6 +7,12 @@ $sliceRaw: 9;
 $pack: 8 * $slice;
 $packRaw: 8 * $sliceRaw;
 
+$nib: 8px;
+$nibRaw: 8;
+
+$stub: 8 * $nib;
+$stubRaw: 8 * $nibRaw;
+
 $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
