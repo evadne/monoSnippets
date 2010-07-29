@@ -805,6 +805,22 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		text-size-adjust: none;
 	
 	}
+	
+		@mixin uaEnableTextZoom {
+		
+			-webkit-text-size-adjust: auto;
+			-moz-text-size-adjust: auto;
+			text-size-adjust: auto;
+		
+		}
+		
+		@mixin uaTextZoom ($ratio: 100%) {
+		
+			-webkit-text-size-adjust: $ratio;
+			-moz-text-size-adjust: $ratio;
+			text-size-adjust: $ratio;
+		
+		}
 
 
 
