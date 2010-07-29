@@ -1092,13 +1092,15 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	@mixin triangle ($tipDirection: "top", $edgeLength: 8px, $blockSize: 16px, $color: black) {
 	
 		border: $edgeLength solid $color;
-		border-color: transparent $color;
+		border-color: transparent;
 		
 		border-#{$tipDirection}-width: 0;
 		
 		$ratio: 0.5;
 		
 		@if $tipDirection == "top" {
+		
+			border-bottom-color: $color;
 		
 			border-right-width: $ratio * $edgeLength;
 			border-left-width: $ratio * $edgeLength;
@@ -1107,6 +1109,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		} @else if $tipDirection == "right" {
 		
+			border-left-color: $color;
+			
 			border-top-width: $ratio * $edgeLength;
 			border-bottom-width: $ratio * $edgeLength;
 			
@@ -1114,12 +1118,16 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		
 		} @else if $tipDirection == "bottom" {
 		
+			border-top-color: $color;
+			
 			border-right-width: $ratio * $edgeLength;
 			border-left-width: $ratio * $edgeLength;
 			
 			margin: (0.5 * ($blockSize - $ratio * $edgeLength)) (0.5 * ($blockSize - $edgeLength));
 		
 		} @else if $tipDirection == "left" {
+		
+			border-right-color: $color;
 		
 			border-top-width: $ratio * $edgeLength;
 			border-bottom-width: $ratio * $edgeLength;
