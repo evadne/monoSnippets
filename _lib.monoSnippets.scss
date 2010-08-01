@@ -272,6 +272,19 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		}
 	
 	}
+	
+	
+	
+	
+	
+	@mixin textReplacement {
+	
+		@include uaDisableSelection;
+		color: transparent;
+		overflow: hidden; 
+		display: block;
+	
+	}
 
 
 
