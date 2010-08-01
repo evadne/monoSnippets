@@ -1253,3 +1253,15 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	
 	
+	@mixin opacity ($level) {
+	
+		opacity: $level;
+		-moz-opacity: $level;
+		filter:progid:DXImageTransform.Microsoft.Alpha(opacity=#{$level});
+	
+	}
+	
+	
+	
+	
+	
