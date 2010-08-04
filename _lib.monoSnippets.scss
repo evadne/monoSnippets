@@ -272,6 +272,19 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		}
 	
 	}
+	
+	
+	
+	
+	
+	@mixin textReplacement {
+	
+		@include uaDisableSelection;
+		color: transparent;
+		overflow: hidden; 
+		display: block;
+	
+	}
 
 
 
@@ -632,6 +645,24 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 					inset 0px (-1 * $width02) 0px $color02,
 					inset $width02 0px 0px $color02,
 					inset (-1 * $width02) 0px 0px $color02,
+					$shadowOffsetX01 $shadowOffsetY01 $shadowSpread01 $shadowColor01
+					
+				);
+						
+			}
+			
+			@mixin borderInsetOutsetSolidShadowed ($color01: transparent, $width01: 1px, $color02: transparent, $width02: 1px, $shadowColor01: rgba(0, 0, 0, 1), $shadowOffsetX01: 0px, $shadowOffsetY01: 0px, $shadowSpread01: 9px) {
+			
+				@include boxShadowWithLiteral(
+				
+					inset 0px $width01 0px $color01, 
+					inset 0px (-1 * $width01) 0px $color01,
+					inset $width01 0px 0px $color01,
+					inset (-1 * $width01) 0px 0px $color01,
+					0px $width02 0px $color02,
+					0px (-1 * $width02) 0px $color02,
+					$width02 0px 0px $color02,
+					(-1 * $width02) 0px 0px $color02,
 					$shadowOffsetX01 $shadowOffsetY01 $shadowSpread01 $shadowColor01
 					
 				);
@@ -1274,6 +1305,18 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 			content: "⑨";
 		
 		}
+	
+	}
+	
+	
+	
+	
+	
+	@mixin opacity ($level) {
+	
+		opacity: $level;
+		-moz-opacity: $level;
+		filter:progid:DXImageTransform.Microsoft.Alpha(opacity=#{$level});
 	
 	}
 	
