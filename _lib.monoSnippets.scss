@@ -663,6 +663,65 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 //	! 
+//	!Images
+
+
+
+
+
+	@mixin imageRenderSmooth {
+	
+		-ms-interpolation-mode: bicubic;
+		image-rendering: optimizeQuality;
+	
+	}
+	
+	@mixin imageRenderCrisp {
+	
+		-ms-interpolation-mode: nearest-neighbor;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: optimizeSpeed;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin imageScale ($maximumWidth: auto, $maximumHeight: auto, $minimumWidth: 72px, $minimumHeight: 72px) {
+	
+		@include imageRenderSmooth; 
+	
+		width: auto;
+		height: auto;
+		
+		@if ($maximumWidth != auto) {
+		
+			height: $maximumWidth;
+			
+		}
+		
+		@if ($maximumHeight != auto) {
+		
+			height: $maximumHeight;
+			
+		}
+		
+		min-width: $minimumWidth;
+		min-height: $minimumHeight;
+	
+	}
+
+
+
+
+
+
+
+
+
+
+//	! 
 //	!Transformations
 
 
