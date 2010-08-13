@@ -298,6 +298,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 		@include uaDisableSelection;
 		color: transparent;
+		text-shadow: none;
 		overflow: hidden; 
 		display: block;
 	
