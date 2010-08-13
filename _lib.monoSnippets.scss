@@ -158,6 +158,23 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		margin-#{$anchoringEdge}: -0.5 * $contextWidth;
 	
 	}
+	
+	
+	
+	
+	
+	@mixin hide {
+	
+		width: 0 !important;
+		max-width: 0 !important;
+		height: 0 !important;
+		max-height: 0 !important;
+		opacity: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		overflow: hidden !important;
+	
+	}
 
 
 
