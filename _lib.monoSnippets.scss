@@ -232,6 +232,17 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	
 	
+	@mixin textReset {
+	
+		font-size: 0;
+		line-height: 0;
+	
+	}
+	
+	
+	
+	
+	
 	@mixin textShadow ($color: rgba(255, 255, 255, .5), $offsetX: 0px, $offsetY: 1px, $spread: 0px) {
 
 		text-shadow: $color $offsetX $offsetY $spread;
@@ -1160,6 +1171,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	@mixin triangle ($tipDirection: "top", $edgeLength: 8px, $blockSize: 16px, $color: black) {
 	
+		@include textReset; 
+	
 		border: $edgeLength solid $color;
 		border-color: transparent;
 		
@@ -1204,10 +1217,6 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 			margin: (0.5 * ($blockSize - $edgeLength)) (0.5 * ($blockSize - $ratio * $edgeLength));
 		
 		}
-	
-	//	Typography reset
-		font-size: 0;
-		line-height: 0;
 	
 	}
 
