@@ -25,6 +25,26 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 //	! 
+//	!Everyone
+
+	@mixin everyone ($property, $value) {
+	
+		-webkit-#{$property}: $value;
+		-moz-#{$property}: $value;
+		-o-#{$property}: $value;
+		-uu-#{$property}: $value;
+		-icab-#{$property}: $value;
+		-khtml-#{$property}: $value;
+		-ms-#{$property}: $value;
+		#{$property}: $value;
+	
+	}
+	
+	
+	
+	
+	
+//	! 
 //	!Box Model, Positioning & Geometry
 
 
@@ -51,16 +71,13 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin borderRadius ($radius: 4.5px, $radius2: $radius, $radius3: $radius, $radius4: $radius) {
 		
+		@include everyone("border-radius", $radius $radius2 $radius3 $radius4);
+		
 		-webkit-border-top-left-radius: $radius;
 		-webkit-border-top-right-radius: $radius2;
 		-webkit-border-bottom-right-radius: $radius3;
 		-webkit-border-bottom-left-radius: $radius4;
 		
-		-moz-border-radius: $radius $radius2 $radius3 $radius4;
-		-o-border-radius: $radius $radius2 $radius3 $radius4;
-		border-radius: $radius $radius2 $radius3 $radius4;
-		-uu-border-radius: $radius $radius2 $radius3 $radius4;	
-	
 		behavior: url(lib.monoSnippets/lib.monoSnippets.hack.borderRadius.htc);
 	
 	}
@@ -202,11 +219,11 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	
 	@mixin textDelimited {
 
+		@include everyone(text-overflow, ellipsis);
+
 		white-space: nowrap;
 		overflow: hidden;	
-		-o-text-overflow: ellipsis;
-		ms-text-overflow: ellipsis;
-		text-overflow: ellipsis;
+
 		-moz-binding: url($monoSnippetsDirectory + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
 	
 	}
@@ -304,32 +321,21 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin transition ($duration: 1s, $timingFunction: linear) {
 	
-		-webkit-transition: all $duration $timingFunction;
-		-moz-transition: all $duration $timingFunction;
-		-o-transition: all $duration $timingFunction;
-		transition: all $duration $timingFunction;
+		@include everyone(transition, all $duration $timingFunction);
 	
 	}
 	
 		@mixin transition1 ($duration: 1s, $property1: all) {
 		
 			@include transition($duration);
-			
-			-webkit-transition-property: $property1;
-			-moz-transition-property: $property1;
-			-o-transition-property: $property1;
-			transition-property: $property1;
+			@include everyone(transition-property, $property1);
 		
 		}
 	
 		@mixin transition2 ($duration: 1s, $property1: all, $property2: property1) {
 		
 			@include transition($duration);
-			
-			-webkit-transition-property: $property1, $property2;
-			-moz-transition-property: $property1, $property2;
-			-o-transition-property: $property1, $property2;
-			transition-property: $property1, $property2;
+			@include everyone(transition-property, $property1 + "," + $property2);
 		
 		}
 	
@@ -360,13 +366,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round) {
 	
-		-o-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		-icab-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		-khtml-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		-moz-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		-webkit-border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-	
-		border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling); 
 		
 		border-top-width: 1px * $borderTopWidth;	
 		border-right-width: 1px * $borderRightWidth;
@@ -419,12 +419,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		@if $literal11 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal11};	}
 		@if $literal12 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal12};	}
 
-		-webkit-box-shadow: $concatnatedString;
-		-moz-box-shadow: $concatnatedString;
-		-o-box-shadow: $concatnatedString;	
-		box-shadow: $concatnatedString;
-		-uu-box-shadow: $concatnatedString;
-	
+		@include everyone(box-shadow, $concatnatedString);
+			
 	}
 	
 
@@ -761,17 +757,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin transformRotate ($degrees: 0deg, $originX: 50%, $originY: 50%) {
 	
-		-webkit-transform: rotate($degrees);
-		-webkit-transform-origin: $originX $originY;
-
-		-moz-transform: rotate($degrees);
-		-moz-transform-origin: $originX $originY;
-
-		-o-transform: rotate($degrees);
-		-o-transform-origin: $originX $originY;
-
-		transform: rotate($degrees);
-		transform-origin: $originX $originY;
+		@include everyone(transform, rotate($degrees));
+		@include everyone(transform-origin, $originX $originY);
 	
 	}
 
@@ -882,33 +869,25 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 	@mixin uaDisableSelection {
 	
-		-webkit-user-select: none;
-		-moz-user-select: none; 
-		user-select: none; 
+		@include everyone(user-select, none);
 	
 	}
 	
 	@mixin uaDisableTextZoom {
 	
-		-webkit-text-size-adjust: none;
-		-moz-text-size-adjust: none;
-		text-size-adjust: none;
-	
+		@include everyone(text-size-adjuse, none);
+		
 	}
 	
 		@mixin uaEnableTextZoom {
 		
-			-webkit-text-size-adjust: auto;
-			-moz-text-size-adjust: auto;
-			text-size-adjust: auto;
+			@include everyone(text-size-adjust, auto);
 		
 		}
 		
 		@mixin uaTextZoom ($ratio: 100%) {
 		
-			-webkit-text-size-adjust: $ratio;
-			-moz-text-size-adjust: $ratio;
-			text-size-adjust: $ratio;
+			@include everyone(text-size-adjust, $ratio);
 		
 		}
 
