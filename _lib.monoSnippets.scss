@@ -1261,6 +1261,42 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		filter:progid:DXImageTransform.Microsoft.Alpha(opacity=#{$level});
 	
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Pointer Handling
+	
+	
+	
+	
+	@mixin pointerEventsOff {
+	
+		@include everyone(pointer-events, none);
+	
+	}
+	
+	
+	
+	
+	
 	
 	
 	
