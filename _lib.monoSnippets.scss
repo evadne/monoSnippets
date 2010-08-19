@@ -393,9 +393,11 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 //	! 
 //	!Backdrops, Borders and 9-Slices
 
-	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round) {
+	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round, $centerPiece: fill) {
 	
 		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling); 
+		
+		@include everyone(border-image-slice, $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $centerPiece);
 		
 		border-top-width: 1px * $borderTopWidth;	
 		border-right-width: 1px * $borderRightWidth;
