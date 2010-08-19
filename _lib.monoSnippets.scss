@@ -325,6 +325,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 	@mixin textReplacement {
 	
 		@include uaDisableSelection;
+		@include textReset; 
 		color: transparent;
 		text-shadow: none;
 		overflow: hidden; 
