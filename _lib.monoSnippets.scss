@@ -14,6 +14,7 @@ $stub: 8 * $nib;
 $stubRaw: 8 * $nibRaw;
 
 $monoSnippetsDirectory: "lib.monoSnippets/" !default;
+$externalPIEPath: "" !default;
 
 
 
@@ -25,7 +26,7 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 
 //	! 
-//	!Everyone
+//	!Everyone & Hacks
 
 	@mixin everyone ($property, $value) {
 	
@@ -37,6 +38,16 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		-khtml-#{$property}: $value;
 		-ms-#{$property}: $value;
 		#{$property}: $value;
+	
+	}
+	
+	@mixin hackPIE {
+	
+		@if $externalPIEPath != "" {
+		
+			behavior: url("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $externalPIEPath);
+		
+		}
 	
 	}
 	
@@ -78,8 +89,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		-webkit-border-bottom-right-radius: $radius3;
 		-webkit-border-bottom-left-radius: $radius4;
 		
-		behavior: url(lib.monoSnippets/lib.monoSnippets.hack.borderRadius.htc);
-	
+		@include hackPIE; 
+					
 	}
 	
 	
@@ -404,6 +415,10 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 		border-right-width: 1px * $borderRightWidth;
 		border-bottom-width: 1px * $borderBottomWidth;
 		border-left-width: 1px * $borderLeftWidth;
+		
+		border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
+		
+		@include hackPIE;
 		
 	}
 	
