@@ -963,7 +963,7 @@ $externalPIEPathRequiresMigration: yes !default;
 
 
 
-	@mixin gradientBackdrop ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5), $fromTop: 0%, $fromLeft: 0%, $toTop: 100%, $toLeft: 0%) {
+	@mixin gradientBackdrop ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5), $fromLeft: 0%, $fromTop: 0%, $toLeft: 0%, $toTop: 0%) {
 	
 		@if $fromColor == transparent {
 		
@@ -986,9 +986,16 @@ $externalPIEPathRequiresMigration: yes !default;
 			
 		);
 	
-		background: -webkit-gradient(linear, $fromTop $fromLeft, $toTop $toLeft, color-stop(0, $fromColor), color-stop(1, $toColor));
+		background: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
 		
-		background: -moz-linear-gradient($fromTop $fromLeft, $fromColor, $toColor $toTop $toLeft);
+		background: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
+		
+		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
+		
+			-pie-background: linear-gradient(opacify($fromColor, 1), opacify($toColor, 1));
+			@include hackPIE;
+		
+		}
 	
 	}
 	
