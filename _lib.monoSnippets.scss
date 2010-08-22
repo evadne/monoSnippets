@@ -43,6 +43,13 @@ $externalPIEPathRequiresMigration: yes !default;
 	
 	}
 	
+	@mixin targetIE7 ($property, $value) {
+	
+	//	Target IE7 and below
+		*#{$property}: $value;
+		
+	}
+	
 	@mixin hackPIE {
 	
 		@if $externalPIEPath != "" {
@@ -99,6 +106,8 @@ $externalPIEPathRequiresMigration: yes !default;
 		-webkit-border-top-right-radius: $radius2;
 		-webkit-border-bottom-right-radius: $radius3;
 		-webkit-border-bottom-left-radius: $radius4;
+		
+		@include everyone("background-clip", padding-box);
 		
 		@include hackPIE; 
 					
@@ -441,15 +450,13 @@ $externalPIEPathRequiresMigration: yes !default;
 	
 		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling); 
 		
-		@include everyone(border-image-slice, $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $centerPiece);
+	//	@include everyone(border-image-slice, $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $centerPiece);
 		
-		border-top-width: 1px * $borderTopWidth;	
-		border-right-width: 1px * $borderRightWidth;
-		border-bottom-width: 1px * $borderBottomWidth;
-		border-left-width: 1px * $borderLeftWidth;
-		
-		border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		
+		border-top: 1px * $borderTopWidth solid transparent;	
+		border-right: 1px * $borderRightWidth solid transparent;
+		border-bottom: 1px * $borderBottomWidth solid transparent;
+		border-left: 1px * $borderLeftWidth solid transparent;
+				
 		@include hackPIE;
 		
 	}
