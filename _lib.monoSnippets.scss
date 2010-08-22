@@ -236,10 +236,20 @@ $externalPIEPathRequiresMigration: yes !default;
 
 
 
-	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit, $important: no) {
+	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit, $important: no, $dyeAnchors: yes) {
 	
-		font-size: $fontSize;
-		line-height: $lineHeight;
+		@if $fontSize != noop {
+		
+			font-size: $fontSize;
+		
+		}
+		
+		@if $lineHeight != noop {
+		
+			line-height: $lineHeight;
+		
+		}
+		
 		color: $color;
 		
 		@if $important == important {
@@ -249,6 +259,17 @@ $externalPIEPathRequiresMigration: yes !default;
 			color: $color !important;
 		
 		} 
+		
+		@if $dyeAnchors == yes {
+		
+			&, a, a:link, a:hover, a:visited {
+			
+				color: $color;
+				text-decoration: none;
+			
+			}
+		
+		}
 		
 	}
 	
@@ -1005,16 +1026,8 @@ $externalPIEPathRequiresMigration: yes !default;
 	
 	@mixin gradientBackdropVertical ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
 	
-		background-color: transparentize(
-		
-			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
-			(alpha($fromColor) + alpha($toColor)) / 2
+		@include gradientBackdrop($fromColor, $toColor, 0%, 0%, 0%, 100%);
 			
-		);
-	
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background: -moz-linear-gradient(top, $fromColor 0%, $toColor 100%);
-	
 	}
 	
 	
