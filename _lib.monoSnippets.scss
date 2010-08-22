@@ -997,19 +997,18 @@ $externalPIEPathRequiresMigration: yes !default;
 			$toColor: rgba(0, 0, 0, 0);
 		
 		}
+	
+		background: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
+		
+		background: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
 		
 		background-color: (opacify($fromColor, 1) + opacify($toColor, 1)) / 2;
-	
 		background-color: transparentize(
 		
 			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
 			(alpha($fromColor) + alpha($toColor)) / 2
 			
 		);
-	
-		background: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
-		
-		background: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
 		
 		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
 		
@@ -1312,8 +1311,14 @@ $externalPIEPathRequiresMigration: yes !default;
 	@mixin opacity ($level) {
 	
 		opacity: $level;
-		-moz-opacity: $level;
-		filter: progid:DXImageTransform.Microsoft.Alpha(opacity=#{$level});
+		-moz-opacity: $level;	
+		
+		@if type-of($level) == "number" {
+
+			filter: progid:DXImageTransform.Microsoft.Alpha(opacity=#{100 * $level});
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(opacity=#{100 * $level})';
+		
+		}
 	
 	}
 
