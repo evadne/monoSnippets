@@ -18,6 +18,8 @@ $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 $externalPIEPath: "" !default;
 $externalPIEPathRequiresMigration: yes !default;
 
+$bodyBackgroundColor: white !default;
+
 
 
 
@@ -228,6 +230,53 @@ $externalPIEPathRequiresMigration: yes !default;
 
 
 
+
+
+
+
+
+
+
+
+
+
+//	! 
+//	!Text & Typography
+
+
+
+
+
+	@mixin colorComposite ($propertyName: "color", $canvasColor: white, $elementColor: rgba(128, 128, 128, .5), $repeatOriginal: no) {
+	
+		$canvasAlpha: opacity($canvasColor);
+		$canvasRed: red($canvasColor);
+		$canvasGreen: green($canvasColor);
+		$canvasBlue: green($canvasColor);
+		
+		$elementAlpha: opacity($elementColor);
+		$elementRed: red($elementColor);
+		$elementGreen: green($elementColor);
+		$elementBlue: blue($elementColor);
+		
+		$compositeAlpha: 1 - (1 - $elementAlpha) * (1 - $canvasAlpha);
+		$compositeRed: (1 - $elementAlpha) * $canvasRed + $elementRed;
+		$compositeGreen: (1 - $elementAlpha) * $canvasGreen + $elementGreen;
+		$compositeBlue: (1 - $elementAlpha) * $canvasBlue + $elementBlue;
+		
+		@if $compositeRed > 255 {	$compositeRed: 255;	}
+		@if $compositeGreen > 255 {	$compositeGreen: 255;	}
+		@if $compositeBlue > 255 {	$compositeBlue: 255;	}
+				
+		#{$propertyName}: rgba($compositeRed, $compositeGreen, $compositeBlue, $compositeAlpha);
+		
+		@if $repeatOriginal != no {
+		
+		#{$propertyName}: $elementColor;
+		
+		}
+	
+	}
 
 
 
