@@ -247,7 +247,7 @@ $bodyBackgroundColor: white !default;
 
 
 
-	@mixin colorComposite ($propertyName: "color", $canvasColor: $bodyBackgroundColor, $elementColor: rgba(128, 128, 128, .5), $repeatOriginal: no) {
+	@mixin colorComposite ($propertyName: "color", $elementColor: rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor: $bodyBackgroundColor) {
 	
 		$canvasAlpha: opacity($canvasColor);
 		$canvasRed: red($canvasColor);
@@ -270,7 +270,7 @@ $bodyBackgroundColor: white !default;
 				
 		#{$propertyName}: rgba($compositeRed, $compositeGreen, $compositeBlue, $compositeAlpha);
 		
-		@if $repeatOriginal != no {
+		@if $repeatOriginal == repeatOriginal {
 		
 		#{$propertyName}: $elementColor;
 		
@@ -427,7 +427,7 @@ $bodyBackgroundColor: white !default;
 	
 		@include uaDisableSelection;
 		@include textReset; 
-		color: transparent;
+		color: transparent !important;
 		text-shadow: none;
 		overflow: hidden; 
 		display: block;
@@ -1113,17 +1113,16 @@ $bodyBackgroundColor: white !default;
 		
 		border-top-width: 1px;
 		border-top-style: solid;
-		@include colorComposite(border-top-color, $bodyBackgroundColor, $colorTopEngrave, repeatOriginal);
+		@include colorComposite(border-top-color, $colorTopEngrave);
 		
 		border-bottom-width: 1px;
 		border-bottom-style: solid;
-		@include colorComposite(border-bottom-color, $bodyBackgroundColor, $colorBottomEngrave, repeatOriginal);
+		@include colorComposite(border-bottom-color, $colorBottomEngrave);
 		
 		@if $reversed != no {
 		
-			@include colorComposite(border-top-color, $bodyBackgroundColor, $colorBottomEngrave, repeatOriginal);
-			
-			@include colorComposite(border-bottom-color, $bodyBackgroundColor, $colorTopEngrave, repeatOriginal);
+			@include colorComposite(border-top-color, $colorBottomEngrave);
+			@include colorComposite(border-bottom-color, $colorTopEngrave);
 		
 		}
 			
@@ -1140,17 +1139,16 @@ $bodyBackgroundColor: white !default;
 		
 		border-left-width: 1px;
 		border-left-style: solid;
-		@include colorComposite(border-left-color, $bodyBackgroundColor, $colorLeftEngrave, repeatOriginal);
+		@include colorComposite(border-left-color, $colorLeftEngrave);
 		
 		border-right-width: 1px;
 		border-right-style: solid;
-		@include colorComposite(border-right-color, $bodyBackgroundColor, $colorRightEngrave, repeatOriginal);
+		@include colorComposite(border-right-color, $colorRightEngrave);
 		
 		@if $reversed != no {
 		
-			@include colorComposite(border-left-color, $bodyBackgroundColor, $colorRightEngrave, repeatOriginal);
-			
-			@include colorComposite(border-right-color, $bodyBackgroundColor, $colorLeftEngrave, repeatOriginal);
+			@include colorComposite(border-left-color, $colorRightEngrave);
+			@include colorComposite(border-right-color, $colorLeftEngrave);
 		
 		}
 			
