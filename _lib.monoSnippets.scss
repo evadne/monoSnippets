@@ -1053,7 +1053,7 @@ $externalPIEPathRequiresMigration: yes !default;
 
 
 
-	@mixin glareSplitVertical ($height: 36px, $reversed: no, $colorTopEngrave: rgba(0, 0, 0, .2), $colorBottomEngrave: rgba(255, 255, 255, .45)) {
+	@mixin glareSplitVertical ($height: 36px, $reversed: no, $colorTopEngrave: rgba(0, 0, 0, .2), $colorBottomEngrave: rgba(255, 255, 255, .45), $colorTopEngraveSubstitute: rgb(193, 193, 193), $colorBottomEngraveSubstitute: rgb(247, 247, 247)) {
 	
 		@include pseudoBlock;
 	
@@ -1062,7 +1062,10 @@ $externalPIEPathRequiresMigration: yes !default;
 		margin-top: .5 * $height - 1;
 		margin-bottom: .5 * $height - 1;
 		
+		border-top: 1px solid $colorTopEngraveSubstitute;
 		border-top: 1px solid $colorTopEngrave;
+		
+		border-bottom: 1px solid $colorBottomEngraveSubstitute;
 		border-bottom: 1px solid $colorBottomEngrave;
 		
 		@if $reversed != no {
@@ -1074,7 +1077,7 @@ $externalPIEPathRequiresMigration: yes !default;
 			
 	}
 	
-	@mixin glareSplitHorizontal ($reversed: no, $width: 18px, $colorLeftEngrave: rgba(0, 0, 0, .2), $colorRightEngrave: rgba(255, 255, 255, .45)) {
+	@mixin glareSplitHorizontal ($reversed: no, $width: 18px, $colorLeftEngrave: rgba(0, 0, 0, .2), $colorRightEngrave: rgba(255, 255, 255, .45), $colorLeftEngraveSubstitute: rgb(193, 193, 193), $colorRightEngraveSubstitute: rgb(247, 247, 247)) {
 	
 		@include pseudoBlock;
 		
@@ -1083,7 +1086,10 @@ $externalPIEPathRequiresMigration: yes !default;
 		margin-left: .5 * $width - 1;
 		margin-right: .5 * $width - 1;
 		
+		border-left: 1px solid $colorLeftEngraveSubstitute;
 		border-left: 1px solid $colorLeftEngrave;
+		
+		border-right: 1px solid $colorRightEngraveSubstitute;
 		border-right: 1px solid $colorRightEngrave;
 		
 		@if $reversed != no {
