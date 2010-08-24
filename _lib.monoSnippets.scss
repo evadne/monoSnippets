@@ -247,7 +247,7 @@ $bodyBackgroundColor: white !default;
 
 
 
-	@mixin colorComposite ($propertyName: "color", $canvasColor: white, $elementColor: rgba(128, 128, 128, .5), $repeatOriginal: no) {
+	@mixin colorComposite ($propertyName: "color", $canvasColor: $bodyBackgroundColor, $elementColor: rgba(128, 128, 128, .5), $repeatOriginal: no) {
 	
 		$canvasAlpha: opacity($canvasColor);
 		$canvasRed: red($canvasColor);
