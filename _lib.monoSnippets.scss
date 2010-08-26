@@ -340,9 +340,9 @@ $bodyBackgroundColor: white !default;
 		@include everyone(text-overflow, ellipsis);
 
 		white-space: nowrap;
-		overflow: hidden;	
+		overflow: hidden;
 
-		-moz-binding: url('lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
+		-moz-binding: url($monoSnippetsDirectory + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
 	
 	}
 	
