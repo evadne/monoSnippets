@@ -1055,17 +1055,15 @@ $bodyBackgroundColor: white !default;
 		}
 	
 		background: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
-		
 		background: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
 		
-		background-color: (opacify($fromColor, 1) + opacify($toColor, 1)) / 2;
-		background-color: transparentize(
+		@include colorComposite(
 		
-			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
-			(alpha($fromColor) + alpha($toColor)) / 2
-			
+			background-color,
+			mix($fromColor, $toColor)
+		
 		);
-		
+				
 		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
 		
 			-pie-background: linear-gradient(opacify($fromColor, 1), opacify($toColor, 1));
