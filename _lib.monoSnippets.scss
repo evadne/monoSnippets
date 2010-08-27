@@ -1053,9 +1053,6 @@ $bodyBackgroundColor: white !default;
 			$toColor: rgba(0, 0, 0, 0);
 		
 		}
-	
-		background: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
 		
 		@include colorComposite(
 		
@@ -1063,6 +1060,9 @@ $bodyBackgroundColor: white !default;
 			mix($fromColor, $toColor)
 		
 		);
+	
+		background-image: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
+		background-image: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
 				
 		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
 		
