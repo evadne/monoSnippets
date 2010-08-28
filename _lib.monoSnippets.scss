@@ -1060,10 +1060,44 @@ $bodyBackgroundColor: white !default;
 			mix($fromColor, $toColor)
 		
 		);
+		
 	
+	//	WebKit	
+		
 		background-image: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background-image: -moz-linear-gradient($fromLeft $fromTop, $fromColor, $toColor $toLeft $toTop);
-				
+		
+		
+	//	Firefox
+		
+		$directionHorizontal: "";
+		
+		@if ($fromLeft < $toLeft) {
+		
+			$directionHorizontal: "left"
+			
+		} @elseif ($fromLeft > $toLeft){
+		
+			$directionHorizontal: "right"
+			
+		}
+		
+		$directionVertical: "";
+		
+		@if ($fromTop < $toTop) {
+		
+			$directionVertical: "top"
+			
+		} @elseif ($fromTop > $toTop){
+		
+			$directionVertical: "bottom"
+			
+		}
+		
+		background-image: -moz-linear-gradient(#{$directionHorizontal} #{$directionVertical}, $fromColor, $toColor);
+		
+		
+	//	PIE / IE	
+			
 		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
 		
 			-pie-background: linear-gradient(opacify($fromColor, 1), opacify($toColor, 1));
