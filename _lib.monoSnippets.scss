@@ -16,7 +16,7 @@ $stubRaw: 8 * $nibRaw;
 $monoSnippetsDirectory: "lib.monoSnippets/" !default;
 
 $externalPIEPath: "" !default;
-$externalPIEPathRequiresMigration: yes !default;
+$irMigratorEnabled: yes !default;
 
 $bodyBackgroundColor: white !default;
 
@@ -56,7 +56,7 @@ $bodyBackgroundColor: white !default;
 	
 		@if $externalPIEPath != "" {
 		
-			@if $externalPIEPathRequiresMigration == yes {
+			@if $irMigratorEnabled == yes {
 
 				behavior: url("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $externalPIEPath);
 			
