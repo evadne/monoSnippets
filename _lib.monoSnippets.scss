@@ -491,17 +491,27 @@ $bodyBackgroundColor: white !default;
 //	! 
 //	!Backdrops, Borders and 9-Slices
 
-	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round, $centerPiece: fill) {
+	@mixin borderImage ($image:none, $borderTopWidth:0, $borderRightWidth:$borderTopWidth, $borderBottomWidth:$borderTopWidth, $borderLeftWidth:$borderTopWidth, $borderScaling:round, $centerPiece:fill) {
 	
-		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling); 
-		
-	//	@include everyone(border-image-slice, $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $centerPiece);
-		
-		border-top: 1px * $borderTopWidth solid transparent;	
+		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling);
+				
+		border-top: 1px * $borderTopWidth solid transparent;
 		border-right: 1px * $borderRightWidth solid transparent;
 		border-bottom: 1px * $borderBottomWidth solid transparent;
 		border-left: 1px * $borderLeftWidth solid transparent;
-				
+			
+			
+		@if $irMigratorEnabled == yes {
+
+			border-image: url(unquote("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $image)) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
+		
+					
+		} @else {
+		
+			border-image: url($image) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
+		
+		}
+			
 		@include hackPIE;
 		
 	}
