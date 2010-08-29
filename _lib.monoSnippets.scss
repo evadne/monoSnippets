@@ -554,8 +554,8 @@ $bodyBackgroundColor: white !default;
 		@if $literal03 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal03};	}
 		@if $literal04 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal04};	}
 		@if $literal05 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal05};	}
-		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}	
-		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}	
+		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}
+		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}
 		@if $literal08 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal08};	}
 		@if $literal09 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal09};	}
 		@if $literal10 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal10};	}
