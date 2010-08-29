@@ -29,6 +29,11 @@ $bodyBackgroundColor: white !default;
 
 	@import "lib.monoSnippets.util.enqueuing";
 	@import "lib.monoSnippets.util.color";
+	
+	
+//	Applied
+	
+	@import "lib.monoSnippets.text";
 
 
 
@@ -247,162 +252,6 @@ $bodyBackgroundColor: white !default;
 
 
 
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Text & Typography
-
-
-
-
-
-	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit, $important: no, $dyeAnchors: yes) {
-	
-		@if $fontSize != noop {
-		
-			font-size: $fontSize;
-		
-		}
-		
-		@if $lineHeight != noop {
-		
-			line-height: $lineHeight;
-		
-		}
-		
-		color: $color;
-		
-		@if $important == important {
-		
-			font-size: $fontSize !important;
-			line-height: $lineHeight !important;
-			color: $color !important;
-		
-		} 
-		
-		@if $dyeAnchors == yes {
-		
-			&, a, a:link, a:hover, a:visited {
-			
-				color: $color;
-				text-decoration: none;
-			
-			}
-		
-		}
-		
-	}
-	
-	
-	
-	
-	
-	@mixin textDelimited {
-
-		@include everyone(text-overflow, ellipsis);
-
-		white-space: nowrap;
-		overflow: hidden;
-
-		-moz-binding: url($monoSnippetsDirectory + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textReset {
-	
-		font-size: 0;
-		line-height: 0;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textShadow ($color: rgba(255, 255, 255, .5), $offsetX: 0px, $offsetY: 1px, $spread: 0px) {
-
-		text-shadow: $color $offsetX $offsetY $spread;
-	
-	}
-
-	@mixin textShadowEngraved ($color: rgba(255, 255, 255, .5)) {
-	
-		text-shadow: $color 0px 1px 0px;
-	
-	}
-
-		@mixin textShadowEngraved2 {
-		
-			text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
-					rgba(0, 0, 0, .15) 0px -1px 0px;
-		
-		}
-	
-	
-	
-	
-	
-	@mixin textStroke ($color: transparent, $width: 1px) {
-
-		-webkit-text-stroke: $width $color;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textPlaceholderColor ($color: rgba(0, 0, 0, .35)) {
-		
-		&::-webkit-input-placeholder {
-		
-			color: $color;
-		
-		}
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textSelectionColor ($backgroundColor: rgba(0, 0, 0, .5), $highlightColor: white) {
-	
-		::selection, ::-moz-selection, ::-webkit-selection {
-		
-			background-color: $backgroundColor;
-			color: $highlightColor;
-		
-		}
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textReplacement {
-	
-		@include uaDisableSelection;
-		@include textReset; 
-		color: transparent !important;
-		text-shadow: none;
-		overflow: hidden; 
-		display: block;
-	
-	}
 
 
 
