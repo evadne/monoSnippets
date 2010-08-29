@@ -472,10 +472,10 @@ $bodyBackgroundColor: white !default;
 	
 	@mixin animation ($name: name, $duration: 1s, $count: infinite, $timingFunction: none) {
 	
-		-webkit-animation-name: $name;
-		-webkit-animation-duration: $duration;
-		-webkit-animation-iteration-count: $count;
-		-webkit-animation-timing-function: $timingFunction
+		@include everyone(animation-name, $name);
+		@include everyone(animation-duration, $duration);
+		@include everyone(iteration-count, $count);
+		@include everyone(timing-function, $timingFunction);
 	
 	}
 
