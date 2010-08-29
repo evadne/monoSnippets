@@ -520,22 +520,10 @@ $bodyBackgroundColor: white !default;
 
 	@mixin boxShadowWithLiteral ($literal01: "", $literal02: "", $literal03: "", $literal04: "", $literal05: "", $literal06: "", $literal07: "", $literal08: "", $literal09: "", $literal10: "", $literal11: "", $literal12: "") {
 	
-		$concatnatedString: $literal01;
-
-		@if $literal02 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal02};	}
-		@if $literal03 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal03};	}
-		@if $literal04 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal04};	}
-		@if $literal05 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal05};	}
-		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}
-		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}
-		@if $literal08 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal08};	}
-		@if $literal09 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal09};	}
-		@if $literal10 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal10};	}
-		@if $literal11 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal11};	}
-		@if $literal12 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal12};	}
-
-		@include everyone(box-shadow, $concatnatedString);
-			
+		@include enqueueStart(box-shadow);
+		@include enqueueMany($literal01, $literal02, $literal03, $literal04, $literal05, $literal06, $literal07, $literal08, $literal09, $literal10, $literal11, $literal12); 
+		@include enqueueCommit;
+					
 	}
 	
 
