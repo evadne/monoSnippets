@@ -131,7 +131,7 @@
 		
 			@include everyone($mnEnqueueingKey, $mnEnqueueingValueStore);
 		
-		} @else {
+		} @elseif $mnEnqueueingKey != "" {
 	
 			#{$mnEnqueueingKey}: $mnEnqueueingValueStore;
 		
