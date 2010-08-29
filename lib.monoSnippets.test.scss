@@ -1,0 +1,84 @@
+//	monoSnippets.test.scss
+//	Evadne Wu at Iridia, 2010
+
+
+
+
+
+@import "lib.monoSnippets";
+
+
+
+
+
+
+
+
+
+
+//	!Enqueuing
+
+
+
+
+
+	@mixin enqueueInnerBoxShadowing {
+	
+		@include enqueueStart(box-shadow, true);
+		@include enqueueMany(
+		
+			inset red 0px 0px 1px,
+			inset blue 2px 0px 1px
+			
+		);
+	
+	}
+	
+	@mixin enqueueOuterBoxShadowing {
+	
+		@include enqueueStart(box-shadow, true);
+		@include enqueue(red 0px 0px 1px);
+		@include enqueue(blue 2px 0px 4px);
+	
+	}
+	
+	
+	
+	
+	
+	.util.enqueuing {
+	
+		basic {
+	
+			@include enqueueStart(box-shadow);
+			@include enqueue(inset rgba(0, 0, 0, .25) 0px 0px 1px);
+			@include enqueue(inset rgba(0, 0, 0, .25) 0px 0px 2px);
+			@include enqueueCommit;
+			
+		}
+		
+		applied {
+	
+			@include boxShadowWithLiteral(
+			
+				inset rgba(0, 0, 0, .25) 0px 0px 1px,
+				inset rgba(0, 0, 0, .25) 0px 0px 2px
+				
+			);
+		
+		}
+		
+		compound {
+	
+			@include enqueueInnerBoxShadowing;
+			@include enqueueOuterBoxShadowing; 
+			@include enqueueCommit;  
+		
+		}
+	
+	}
+	
+	
+	
+	
+	
