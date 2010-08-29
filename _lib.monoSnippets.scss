@@ -1162,13 +1162,14 @@ $bodyBackgroundColor: white !default;
 		@if $tipDirection == bottom { $coloredEdge: top; }
 		@if $tipDirection == left { $coloredEdge: right; }
 		
-		border: $edgeLength solid $color;
+		border: $ratio * $edgeLength solid $color;
 		border-color: transparent;
 		
-		border-#{$tipDirection}-width: $ratio * $edgeLength;
-		border-#{$coloredEdge}-width: $ratio * $edgeLength;
+		border-#{$tipDirection}-width: $edgeLength;
+		border-#{$coloredEdge}-width: $edgeLength;
 		
 		border-#{$tipDirection}-width: 0;
+		
 		border-#{$coloredEdge}-color: $color;
 		
 		margin: (0.5 * ($blockSize - $verticalMarginMultiplier * $edgeLength)) (0.5 * ($blockSize - $horizontalMarginMultiplier * $edgeLength));
