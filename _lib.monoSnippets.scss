@@ -243,7 +243,7 @@ $bodyBackgroundColor: white !default;
 
 
 
-	@mixin colorComposite ($propertyName: "color", $elementColor: rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor: $bodyBackgroundColor) {
+	@mixin colorComposite ($propertyName: "color", $elementColor:rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor:$bodyBackgroundColor) {
 	
 		$canvasAlpha: opacity($canvasColor);
 		$canvasRed: red($canvasColor);
@@ -263,10 +263,12 @@ $bodyBackgroundColor: white !default;
 		@if $compositeRed > 255 {	$compositeRed: 255;	}
 		@if $compositeGreen > 255 {	$compositeGreen: 255;	}
 		@if $compositeBlue > 255 {	$compositeBlue: 255;	}
-				
-		#{$propertyName}: rgba($compositeRed, $compositeGreen, $compositeBlue, $compositeAlpha);
 		
-		@if $repeatOriginal == repeatOriginal {
+		$compositeColor: rgba($compositeRed, $compositeGreen, $compositeBlue, $compositeAlpha);
+				
+		#{$propertyName}: $compositeColor;
+		
+		@if $repeatOriginal == repeatOriginal and opacity($elementColor) != 1 {
 		
 		#{$propertyName}: $elementColor;
 		
