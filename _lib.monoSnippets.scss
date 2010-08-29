@@ -1006,7 +1006,7 @@ $bodyBackgroundColor: white !default;
 	
 	@mixin uaDisableTextZoom {
 	
-		@include everyone(text-size-adjuse, none);
+		@include everyone(text-size-adjust, none);
 		
 	}
 	
