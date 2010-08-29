@@ -1,306 +1,42 @@
 //	monoSnippets.scss
 //	Evadne Wu at Iridia Productions.
+	
+	
+	
+	
+	
+	$irMigratorEnabled: yes !default;
 
-$slice: 9px;
-$sliceRaw: 9;
+	$pathMonoSnippets: "lib.monoSnippets/" !default;
+	$pathPIE: "" !default;
+	$pathIRMigrator: "" !default; 
+	
+	$irMigratorPrefix: "##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" !default;
 
-$pack: 8 * $slice;
-$packRaw: 8 * $sliceRaw;
+	@if ($irMigratorEnabled == yes) {
 
-$nib: 8px;
-$nibRaw: 8;
-
-$stub: 8 * $nib;
-$stubRaw: 8 * $nibRaw;
-
-$monoSnippetsDirectory: "lib.monoSnippets/" !default;
-
-$externalPIEPath: "" !default;
-$irMigratorEnabled: yes !default;
-
-$bodyBackgroundColor: white !default;
-
-
-
-
-
-
+	//	this prefix is to be parsed and found, then replaced by IRMigrator.
+		$pathIRMigrator: $irMigratorPrefix;
+	
+	}
+	
+	$colorBodyBackground: white !default;
+	
+	
+	
+	
+	
 //	Base Utilities
 
 	@import "lib.monoSnippets.util.enqueuing";
 	@import "lib.monoSnippets.util.color";
+	@import "lib.monoSnippets.util.positioning";
 	
 	
 //	Applied
 	
 	@import "lib.monoSnippets.text";
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Everyone & Hacks
-
-	@mixin everyone ($property, $value) {
-	
-		-webkit-#{$property}: $value;
-		-moz-#{$property}: $value;
-		-o-#{$property}: $value;
-		-uu-#{$property}: $value;
-		-icab-#{$property}: $value;
-		-khtml-#{$property}: $value;
-		-ms-#{$property}: $value;
-		#{$property}: $value;
-	
-	}
-	
-	@mixin targetIE7 ($property, $value) {
-	
-		*#{$property}: $value;
-		
-	}
-	
-	@mixin hackPIE {
-	
-		@if $externalPIEPath != "" {
-		
-			@if $irMigratorEnabled == yes {
-
-				behavior: url("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $externalPIEPath);
-			
-						
-			} @else {
-			
-				behavior: url($externalPIEPath);
-			
-			}
-		
-		}
-	
-	}
-	
-	
-	
-	
-	
-//	! 
-//	!Box Model, Positioning & Geometry
-
-
-
-
-
-	@mixin inlineBlock {
-	
-	//	Mozilla Firefox
-		display: -moz-inline-stack;
-		
-	//	Nonquirkies
-		display: inline-block;
-	
-	//	IE
-		zoom: 1;
-		*display: inline;
-	
-	}
-
-
-
-
-
-	@mixin borderRadius ($radius: 4.5px, $radius2: $radius, $radius3: $radius, $radius4: $radius) {
-		
-		@include everyone("border-radius", $radius $radius2 $radius3 $radius4);
-		
-		-webkit-border-top-left-radius: $radius;
-		-webkit-border-top-right-radius: $radius2;
-		-webkit-border-bottom-right-radius: $radius3;
-		-webkit-border-bottom-left-radius: $radius4;
-		
-		@include everyone("background-clip", padding-box);
-		
-		@include hackPIE; 
-					
-	}
-	
-	
-	
-	
-	
-	@mixin size ($width: 128px, $height: $width) {
-
-		width: $width;
-		height: $height;
-	
-	}
-	
-	
-	
-	
-		
-	@mixin width ($width: 144px, $minWidth: $width, $maxWidth: $width) {
-
-		width: $width;
-		min-width: $minWidth;
-		max-width: $maxWidth;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin height ($height: 144px, $minHeight: $height, $maxHeight: $height) {
-
-		height: $height;
-		min-height: $minHeight;
-		max-height: $maxHeight;
-	
-	}
-
-
-
-
-		
-	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $topInset) {
-
-		display: block;
-		position: absolute;
-
-		top: $topInset;
-		right: $rightInset;
-		bottom: $bottomInset;
-		left: $leftInset;
-	
-	}
-	
-	@mixin full ($inset: 0) {
-	
-		@include fullInset($inset, $inset, $inset, $inset);
-	
-	}
-	
-	
-	
-	
-	
-	@mixin margin ($topMargin: 0, $rightMargin: $topMargin, $bottomMargin: $topMargin, $leftMargin: $topMargin) {
-	
-		margin: $topMargin $rightMargin $bottomMargin $leftMargin;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin pseudoBlock {
-	
-		content: "";
-		display: block;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin anchoredToEdgeWithContextWidth ($anchoringEdge: "right", $contextWidth: 960px) {
-	
-	//	Aligns the element within a 100%-width element to an imaginary left or right boundry.
-	
-		position: absolute;
-		@include fullInset(auto);
-		
-		#{$anchoringEdge}: 50%;
-		margin-#{$anchoringEdge}: -0.5 * $contextWidth;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin hide {
-	
-		@include size(0);
-		@include opacity(0);
-		margin: 0 !important;
-		padding: 0 !important;
-		overflow: hidden !important;
-	
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Transitions & Animations
-
-
-
-
-
-	@mixin transition ($duration: 1s, $timingFunction: linear) {
-	
-		@include everyone(transition, all $duration $timingFunction);
-	
-	}
-	
-		@mixin transition1 ($duration: 1s, $property1: all) {
-		
-			@include transition($duration);
-			@include everyone(transition-property, $property1);
-		
-		}
-	
-		@mixin transition2 ($duration: 1s, $property1: all, $property2: property1) {
-		
-			@include transition($duration);
-			@include everyone(transition-property, $property1 + "," + $property2);
-		
-		}
-	
-	
-	
-	
-	
-	@mixin animation ($name: name, $duration: 1s, $count: infinite, $timingFunction: none) {
-	
-		@include everyone(animation-name, $name);
-		@include everyone(animation-duration, $duration);
-		@include everyone(iteration-count, $count);
-		@include everyone(timing-function, $timingFunction);
-	
-	}
+	@import "lib.monoSnippets.transitionAndAnimation";
 
 
 
@@ -314,29 +50,19 @@ $bodyBackgroundColor: white !default;
 //	! 
 //	!Backdrops, Borders and 9-Slices
 
-	@mixin borderImage ($image:none, $borderTopWidth:0, $borderRightWidth:$borderTopWidth, $borderBottomWidth:$borderTopWidth, $borderLeftWidth:$borderTopWidth, $borderScaling:round, $centerPiece:fill) {
+	@mixin borderImage ($imageURL:none, $borderTopWidth:0, $borderRightWidth:$borderTopWidth, $borderBottomWidth:$borderTopWidth, $borderLeftWidth:$borderTopWidth, $borderScaling:round, $centerPiece:fill) {
 	
-		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling);
+		@include everyone(border-image, url($imageURL) $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling);
 				
 		border-top: 1px * $borderTopWidth solid transparent;
 		border-right: 1px * $borderRightWidth solid transparent;
 		border-bottom: 1px * $borderBottomWidth solid transparent;
 		border-left: 1px * $borderLeftWidth solid transparent;
-			
-			
-		@if $irMigratorEnabled == yes {
-
-			border-image: url(unquote("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $image)) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
 		
-					
-		} @else {
-		
-			border-image: url($image) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
-		
-		}
-			
+		border-image: url($pathIRMigrator + $imageURL) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
+							
 		@include hackPIE;
-		
+			
 	}
 	
 		@mixin threePartImage ($image: none, $borderLeftWidth: 0, $borderRightWidth: 0) {
@@ -701,6 +427,30 @@ $bodyBackgroundColor: white !default;
 		@include everyone(transform-origin, $originX $originY);
 	
 	}
+	
+	@mixin enqueueTransformRotate ($degrees: 0deg) {
+		
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(rotate($degrees));
+	
+	}
+	
+	@mixin enqueueTransformScale ($ratio: 1) {
+	
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(scale($ratio));
+	
+	}
+	
+	@mixin enqueueTransformTranslate ($deltaX: 0, $deltaY: 0) {
+	
+		@if unit($deltaX) == "" {	$deltaX: 1px * $deltaX;	}
+		@if unit($deltaY) == "" {	$deltaY: 1px * $deltaY;	}
+
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(translate($deltaX, $deltaY)); 
+	
+	}
 
 
 
@@ -887,6 +637,8 @@ $bodyBackgroundColor: white !default;
 	//	Firefox
 		
 		$directionHorizontal: "";
+		$directionVertical: "";
+		$directionLiteralSpacer: "";
 		
 		@if ($fromLeft < $toLeft) {
 		
@@ -898,8 +650,6 @@ $bodyBackgroundColor: white !default;
 			
 		}
 		
-		$directionVertical: "";
-		
 		@if ($fromTop < $toTop) {
 		
 			$directionVertical: "top"
@@ -910,7 +660,13 @@ $bodyBackgroundColor: white !default;
 			
 		}
 		
-		background-image: -moz-linear-gradient(#{$directionHorizontal} #{$directionVertical}, $fromColor, $toColor);
+		@if $directionHorizontal != "" and $directionVertical != "" {
+		
+			$directionLiteralSpacer: " ";
+		
+		}
+		
+		background-image: -moz-linear-gradient(#{$directionHorizontal}#{$directionLiteralSpacer}#{$directionVertical}, $fromColor, $toColor);
 		
 		
 	//	PIE / IE	
@@ -940,10 +696,7 @@ $bodyBackgroundColor: white !default;
 	
 	@mixin gradientBackdropHorizontal ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
 	
-		background-color: ($fromColor + $toColor) / 2;
-	
-		background: -webkit-gradient(linear, left top, right top, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background: -moz-linear-gradient(left, $fromColor 0%, $toColor 100%);
+		@include gradientBackdrop($fromColor, $toColor, 0%, 0%, 100%, 0%);
 	
 	}
 
@@ -1007,7 +760,7 @@ $bodyBackgroundColor: white !default;
 	
 	
 	
-	@mixin shadowUp {
+		@mixin shadowUp {
 	
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0, 0)), color-stop(1, rgba(0,0,0, 1)));
 		background: -moz-linear-gradient(center top, rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 100%);

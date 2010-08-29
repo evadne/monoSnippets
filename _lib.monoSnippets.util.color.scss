@@ -5,7 +5,7 @@
 
 
 
-	@mixin colorComposite ($propertyName: "color", $elementColor:rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor:$bodyBackgroundColor) {
+	@mixin colorComposite ($propertyName: "color", $elementColor:rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor:$colorBodyBackground) {
 	
 		$canvasAlpha: opacity($canvasColor);
 		$canvasRed: red($canvasColor);

@@ -12,13 +12,15 @@
 	
 	$mnEnqueueingKey: "";
 	$mnEnqueueingValueStore: "";
+	$mnEnqueueingSeparator: ", ";
 
-	@mixin enqueueStart ($forKey:color, $forEveryone:true) {
+	@mixin enqueueStart ($forKey:color, $forEveryone:true, $separator: ", ") {
 	
 		@if $mnEnqueueing == false {
 			
 			$mnEnqueueingKey: $forKey;
 			$mnEnqueueingForEveryone: $forEveryone;
+			$mnEnqueueingSeparator: $separator;
 			$mnEnqueueing: true;
 		
 		} @elseif $mnEnqueueingKey != $forKey {
@@ -29,7 +31,7 @@
 	
 	}
 	
-	@mixin enqueue ($value, $separator: ", ") {
+	@mixin enqueue ($value) {
 	
 		@if $value != "" {
 	
@@ -39,7 +41,7 @@
 		
 		} @else {
 		
-			$mnEnqueueingValueStore: $mnEnqueueingValueStore + unquote($separator) + $value;
+			$mnEnqueueingValueStore: $mnEnqueueingValueStore + unquote($mnEnqueueingSeparator) + $value;
 		
 		}
 		

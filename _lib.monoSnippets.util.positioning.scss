@@ -1,0 +1,221 @@
+//	lib.monoSnippets.util.positioning.scss
+//	Evadne Wu at Iridia, 2010
+	
+	
+	
+	
+	
+	$slice: 9px;
+	$sliceRaw: 9;
+	
+	$pack: 8 * $slice;
+	$packRaw: 8 * $sliceRaw;
+	
+	$nib: 8px;
+	$nibRaw: 8;
+	
+	$stub: 8 * $nib;
+	$stubRaw: 8 * $nibRaw;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	! 
+//	!Everyone & Hacks
+
+	@mixin everyone ($property, $value) {
+	
+		-webkit-#{$property}: $value;
+		-moz-#{$property}: $value;
+		-o-#{$property}: $value;
+		-uu-#{$property}: $value;
+		-icab-#{$property}: $value;
+		-khtml-#{$property}: $value;
+		-ms-#{$property}: $value;
+		#{$property}: $value;
+	
+	}
+	
+	@mixin targetIE7 ($property, $value) {
+	
+		*#{$property}: $value;
+		
+	}
+	
+	@mixin hackPIE {
+	
+		@if $pathPIE != "" {
+			
+			behavior: url($pathIRMigrator + $pathPIE);
+		
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	! 
+//	!Box Model, Positioning & Geometry
+
+
+
+
+
+	@mixin inlineBlock {
+	
+	//	Mozilla Firefox
+		display: -moz-inline-stack;
+		
+	//	Nonquirkies
+		display: inline-block;
+	
+	//	IE
+		zoom: 1;
+		*display: inline;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin borderRadius ($radius: 4.5px, $radius2: $radius, $radius3: $radius, $radius4: $radius) {
+		
+		@include everyone("border-radius", $radius $radius2 $radius3 $radius4);
+		
+		-webkit-border-top-left-radius: $radius;
+		-webkit-border-top-right-radius: $radius2;
+		-webkit-border-bottom-right-radius: $radius3;
+		-webkit-border-bottom-left-radius: $radius4;
+		
+		@include everyone("background-clip", padding-box);
+		
+		@include hackPIE; 
+					
+	}
+	
+	
+	
+	
+	
+	@mixin size ($width: 128px, $height: $width) {
+
+		width: $width;
+		height: $height;
+	
+	}
+	
+	
+	
+	
+		
+	@mixin width ($width: 144px, $minWidth: $width, $maxWidth: $width) {
+
+		width: $width;
+		min-width: $minWidth;
+		max-width: $maxWidth;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin height ($height: 144px, $minHeight: $height, $maxHeight: $height) {
+
+		height: $height;
+		min-height: $minHeight;
+		max-height: $maxHeight;
+	
+	}
+	
+	
+	
+	
+		
+	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $topInset) {
+
+		display: block;
+		position: absolute;
+
+		top: $topInset;
+		right: $rightInset;
+		bottom: $bottomInset;
+		left: $leftInset;
+	
+	}
+	
+	@mixin full ($inset: 0) {
+	
+		@include fullInset($inset, $inset, $inset, $inset);
+	
+	}
+	
+	
+	
+	
+	
+	@mixin margin ($topMargin: 0, $rightMargin: $topMargin, $bottomMargin: $topMargin, $leftMargin: $topMargin) {
+	
+		margin: $topMargin $rightMargin $bottomMargin $leftMargin;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin pseudoBlock {
+	
+		content: "";
+		display: block;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin anchoredToEdgeWithContextWidth ($anchoringEdge: "right", $contextWidth: 960px) {
+	
+	//	Aligns the element within a 100%-width element to an imaginary left or right boundry.
+	
+		position: absolute;
+		@include fullInset(auto);
+		
+		#{$anchoringEdge}: 50%;
+		margin-#{$anchoringEdge}: -0.5 * $contextWidth;
+	
+	}
+	
+	
+	
+	
+	
+	@mixin hide {
+	
+		@include size(0);
+		@include opacity(0);
+		margin: 0 !important;
+		padding: 0 !important;
+		overflow: hidden !important;
+	
+	}
+	
+	
+	
+	
+	

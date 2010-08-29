@@ -1,0 +1,46 @@
+//	monoSnippets.text.scss
+//	Making working with a single value from multiple mixins easy.
+
+//	Evadne Wu at Iridia, 2010
+	
+	
+	
+	
+	
+	@mixin transition ($duration: 1s, $timingFunction: linear) {
+	
+		@include everyone(transition, all $duration $timingFunction);
+	
+	}
+	
+		@mixin transition1 ($duration: 1s, $property1: all) {
+		
+			@include transition($duration);
+			@include everyone(transition-property, $property1);
+		
+		}
+	
+		@mixin transition2 ($duration: 1s, $property1: all, $property2: property1) {
+		
+			@include transition($duration);
+			@include everyone(transition-property, $property1 + "," + $property2);
+		
+		}
+	
+	
+	
+	
+	
+	@mixin animation ($name: name, $duration: 1s, $count: infinite, $timingFunction: none) {
+	
+		@include everyone(animation-name, $name);
+		@include everyone(animation-duration, $duration);
+		@include everyone(iteration-count, $count);
+		@include everyone(timing-function, $timingFunction);
+	
+	}
+	
+	
+	
+	
+	
