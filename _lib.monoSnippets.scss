@@ -25,9 +25,10 @@ $bodyBackgroundColor: white !default;
 
 
 
-//	Utilities
+//	Base Utilities
 
 	@import "lib.monoSnippets.util.enqueuing";
+	@import "lib.monoSnippets.util.color";
 
 
 
@@ -245,45 +246,7 @@ $bodyBackgroundColor: white !default;
 
 
 
-//	! 
-//	!Text & Typography
 
-
-
-
-
-	@mixin colorComposite ($propertyName: "color", $elementColor:rgba(128, 128, 128, .5), $repeatOriginal:repeatOriginal, $canvasColor:$bodyBackgroundColor) {
-	
-		$canvasAlpha: opacity($canvasColor);
-		$canvasRed: red($canvasColor);
-		$canvasGreen: green($canvasColor);
-		$canvasBlue: green($canvasColor);
-		
-		$elementAlpha: opacity($elementColor);
-		$elementRed: red($elementColor);
-		$elementGreen: green($elementColor);
-		$elementBlue: blue($elementColor);
-		
-		$compositeAlpha: 1 - (1 - $elementAlpha) * (1 - $canvasAlpha);
-		$compositeRed: (1 - $elementAlpha) * $canvasRed + $elementRed;
-		$compositeGreen: (1 - $elementAlpha) * $canvasGreen + $elementGreen;
-		$compositeBlue: (1 - $elementAlpha) * $canvasBlue + $elementBlue;
-		
-		@if $compositeRed > 255 {	$compositeRed: 255;	}
-		@if $compositeGreen > 255 {	$compositeGreen: 255;	}
-		@if $compositeBlue > 255 {	$compositeBlue: 255;	}
-		
-		$compositeColor: rgba($compositeRed, $compositeGreen, $compositeBlue, $compositeAlpha);
-				
-		#{$propertyName}: $compositeColor;
-		
-		@if $repeatOriginal == repeatOriginal and opacity($elementColor) != 1 {
-		
-		#{$propertyName}: $elementColor;
-		
-		}
-	
-	}
 
 
 
