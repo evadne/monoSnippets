@@ -2,38 +2,6 @@
 //	Making working with a single value from multiple mixins easy.
 
 //	Evadne Wu at Iridia, 2010
-
-
-
-
-
-/*	USE CASE:
-	
-		@mixin enqueueInnerBoxShadowing {
-
-			@include enqueueStart(box-shadow, true);
-			@include enqueue(inset red 0px 0px 1px);
-			@include enqueue(inset blue 2px 0px 1px);
-		
-		}
-		
-		@mixin enqueueOuterBoxShadowing {
-		
-			@include enqueueStart(box-shadow, true);
-			@include enqueue(red 0px 0px 1px);
-			@include enqueue(blue 2px 0px 4px);
-		
-		}
-		
-		element {
-		
-			@include enqueueInnerBoxShadowing;
-			@include enqueueOuterBoxShadowing;
-			@include enqueueCommit;
-		
-		}
-	
-	*/
 	
 	
 	
