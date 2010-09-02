@@ -42,6 +42,19 @@
 	
 	}
 	
+	@mixin everything($property, $value) {
+	
+		#{$property}: -webkit-#{$value};
+		#{$property}: -moz-#{$value};
+		#{$property}: -o-#{$value};
+		#{$property}: -uu-#{$value};
+		#{$property}: -icab-#{$value};
+		#{$property}: -khtml-#{$value};
+		#{$property}: -ms-#{$value};
+		#{$property}: #{$value};
+	
+	}
+	
 	@mixin targetIE7 ($property, $value) {
 	
 		*#{$property}: $value;
