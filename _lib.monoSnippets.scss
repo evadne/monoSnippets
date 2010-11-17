@@ -1,397 +1,42 @@
 //	monoSnippets.scss
 //	Evadne Wu at Iridia Productions.
-
-$slice: 9px;
-$sliceRaw: 9;
-
-$pack: 8 * $slice;
-$packRaw: 8 * $sliceRaw;
-
-$nib: 8px;
-$nibRaw: 8;
-
-$stub: 8 * $nib;
-$stubRaw: 8 * $nibRaw;
-
-$monoSnippetsDirectory: "lib.monoSnippets/" !default;
-$externalPIEPath: "" !default;
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Everyone & Hacks
-
-	@mixin everyone ($property, $value) {
 	
-		-webkit-#{$property}: $value;
-		-moz-#{$property}: $value;
-		-o-#{$property}: $value;
-		-uu-#{$property}: $value;
-		-icab-#{$property}: $value;
-		-khtml-#{$property}: $value;
-		-ms-#{$property}: $value;
-		#{$property}: $value;
+	
+	
+	
+	
+	$irMigratorEnabled: yes !default;
+
+	$pathMonoSnippets: "lib.monoSnippets/" !default;
+	$pathPIE: "" !default;
+	$pathIRMigrator: "" !default; 
+	
+	$irMigratorPrefix: "##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" !default;
+
+	@if ($irMigratorEnabled == yes) {
+
+	//	this prefix is to be parsed and found, then replaced by IRMigrator.
+		$pathIRMigrator: $irMigratorPrefix;
 	
 	}
 	
-	@mixin hackPIE {
-	
-		@if $externalPIEPath != "" {
-		
-			behavior: url("##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" + $externalPIEPath);
-		
-		}
-	
-	}
+	$colorBodyBackground: white !default;
 	
 	
 	
 	
 	
-//	! 
-//	!Box Model, Positioning & Geometry
+//	Base Utilities
 
-
-
-
-
-	@mixin inlineBlock {
+	@import "lib.monoSnippets.util.enqueuing";
+	@import "lib.monoSnippets.util.color";
+	@import "lib.monoSnippets.util.positioning";
 	
-	//	Mozilla Firefox
-		display: -moz-inline-stack;
-		
-	//	Nonquirkies
-		display: inline-block;
 	
-	//	IE
-		zoom: 1;
-		*display: inline;
+//	Applied
 	
-	}
-
-
-
-
-
-	@mixin borderRadius ($radius: 4.5px, $radius2: $radius, $radius3: $radius, $radius4: $radius) {
-		
-		@include everyone("border-radius", $radius $radius2 $radius3 $radius4);
-		
-		-webkit-border-top-left-radius: $radius;
-		-webkit-border-top-right-radius: $radius2;
-		-webkit-border-bottom-right-radius: $radius3;
-		-webkit-border-bottom-left-radius: $radius4;
-		
-		@include hackPIE; 
-					
-	}
-	
-	
-	
-	
-	
-	@mixin size ($width: 128px, $height: $width) {
-
-		width: $width;
-		height: $height;
-	
-	}
-	
-	
-	
-	
-		
-	@mixin width ($width: 144px, $minWidth: $width, $maxWidth: $width) {
-
-		width: $width;
-		min-width: $minWidth;
-		max-width: $maxWidth;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin height ($height: 144px, $minHeight: $height, $maxHeight: $height) {
-
-		height: $height;
-		min-height: $minHeight;
-		max-height: $maxHeight;
-	
-	}
-
-
-
-
-		
-	@mixin fullInset ($topInset: 0, $rightInset: $topInset, $bottomInset: $topInset, $leftInset: $topInset) {
-
-		display: block;
-		position: absolute;
-
-		top: $topInset;
-		right: $rightInset;
-		bottom: $bottomInset;
-		left: $leftInset;
-	
-	}
-	
-	@mixin full ($inset: 0) {
-	
-		@include fullInset($inset, $inset, $inset, $inset);
-	
-	}
-	
-	
-	
-	
-	
-	@mixin margin ($topMargin: 0, $rightMargin: $topMargin, $bottomMargin: $topMargin, $leftMargin: $topMargin) {
-	
-		margin: $topMargin $rightMargin $bottomMargin $leftMargin;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin pseudoBlock {
-	
-		content: "";
-		display: block;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin anchoredToEdgeWithContextWidth ($anchoringEdge: "right", $contextWidth: 960px) {
-	
-	//	Aligns the element within a 100%-width element to an imaginary left or right boundry.
-	
-		position: absolute;
-		@include fullInset(auto);
-		
-		#{$anchoringEdge}: 50%;
-		margin-#{$anchoringEdge}: -0.5 * $contextWidth;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin hide {
-	
-		width: 0 !important;
-		max-width: 0 !important;
-		height: 0 !important;
-		max-height: 0 !important;
-		opacity: 0 !important;
-		margin: 0 !important;
-		padding: 0 !important;
-		overflow: hidden !important;
-	
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Text & Typography
-
-
-
-
-
-	@mixin text ($fontSize: 14px, $lineHeight: 18px, $color: inherit, $important: no) {
-	
-		font-size: $fontSize;
-		line-height: $lineHeight;
-		color: $color;
-		
-		@if $important == important {
-		
-			font-size: $fontSize !important;
-			line-height: $lineHeight !important;
-			color: $color !important;
-		
-		} 
-		
-	}
-	
-	
-	
-	
-	
-	@mixin textDelimited {
-
-		@include everyone(text-overflow, ellipsis);
-
-		white-space: nowrap;
-		overflow: hidden;	
-
-		-moz-binding: url($monoSnippetsDirectory + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textReset {
-	
-		font-size: 0;
-		line-height: 0;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textShadow ($color: rgba(255, 255, 255, .5), $offsetX: 0px, $offsetY: 1px, $spread: 0px) {
-
-		text-shadow: $color $offsetX $offsetY $spread;
-	
-	}
-
-	@mixin textShadowEngraved ($color: rgba(255, 255, 255, .5)) {
-	
-		text-shadow: $color 0px 1px 0px;
-	
-	}
-
-		@mixin textShadowEngraved2 {
-		
-			text-shadow: 	rgba(255, 255, 255, .2) 0px 1px 0px,
-					rgba(0, 0, 0, .15) 0px -1px 0px;
-		
-		}
-	
-	
-	
-	
-	
-	@mixin textStroke ($color: transparent, $width: 1px) {
-
-		-webkit-text-stroke: $width $color;
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textPlaceholderColor ($color: rgba(0, 0, 0, .35)) {
-		
-		&::-webkit-input-placeholder {
-		
-			color: $color;
-		
-		}
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textSelectionColor ($backgroundColor: rgba(0, 0, 0, .5), $highlightColor: white) {
-	
-		::selection, ::-moz-selection, ::-webkit-selection {
-		
-			background-color: $backgroundColor;
-			color: $highlightColor;
-		
-		}
-	
-	}
-	
-	
-	
-	
-	
-	@mixin textReplacement {
-	
-		@include uaDisableSelection;
-		@include textReset; 
-		color: transparent;
-		text-shadow: none;
-		overflow: hidden; 
-		display: block;
-	
-	}
-
-
-
-
-
-
-
-
-
-
-//	! 
-//	!Transitions & Animations
-
-
-
-
-
-	@mixin transition ($duration: 1s, $timingFunction: linear) {
-	
-		@include everyone(transition, all $duration $timingFunction);
-	
-	}
-	
-		@mixin transition1 ($duration: 1s, $property1: all) {
-		
-			@include transition($duration);
-			@include everyone(transition-property, $property1);
-		
-		}
-	
-		@mixin transition2 ($duration: 1s, $property1: all, $property2: property1) {
-		
-			@include transition($duration);
-			@include everyone(transition-property, $property1 + "," + $property2);
-		
-		}
-	
-	
-	
-	
-	
-	@mixin animation ($name: name, $duration: 1s, $count: infinite, $timingFunction: none) {
-	
-		-webkit-animation-name: $name;
-		-webkit-animation-duration: $duration;
-		-webkit-animation-iteration-count: $count;
-		-webkit-animation-timing-function: $timingFunction
-	
-	}
+	@import "lib.monoSnippets.text";
+	@import "lib.monoSnippets.transitionAndAnimation";
 
 
 
@@ -405,21 +50,19 @@ $externalPIEPath: "" !default;
 //	! 
 //	!Backdrops, Borders and 9-Slices
 
-	@mixin borderImage ($image: none, $borderTopWidth: 0, $borderRightWidth: $borderTopWidth, $borderBottomWidth: $borderTopWidth, $borderLeftWidth: $borderTopWidth, $borderScaling: round, $centerPiece: fill) {
+	@mixin borderImage ($imageURL:none, $borderTopWidth:0, $borderRightWidth:$borderTopWidth, $borderBottomWidth:$borderTopWidth, $borderLeftWidth:$borderTopWidth, $borderScaling:round, $centerPiece:fill) {
 	
-		@include everyone(border-image, $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling); 
+		@include everyone(border-image, url($imageURL) $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling);
+				
+		border-top: 1px * $borderTopWidth solid transparent;
+		border-right: 1px * $borderRightWidth solid transparent;
+		border-bottom: 1px * $borderBottomWidth solid transparent;
+		border-left: 1px * $borderLeftWidth solid transparent;
 		
-		@include everyone(border-image-slice, $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $centerPiece);
-		
-		border-top-width: 1px * $borderTopWidth;	
-		border-right-width: 1px * $borderRightWidth;
-		border-bottom-width: 1px * $borderBottomWidth;
-		border-left-width: 1px * $borderLeftWidth;
-		
-		border-image: $image $borderTopWidth $borderRightWidth $borderBottomWidth $borderLeftWidth $borderScaling $borderScaling;
-		
+		border-image: url($pathIRMigrator + $imageURL) $borderTopWidth $borderRightWidth $borderTopWidth $borderLeftWidth fill;
+							
 		@include hackPIE;
-		
+			
 	}
 	
 		@mixin threePartImage ($image: none, $borderLeftWidth: 0, $borderRightWidth: 0) {
@@ -452,22 +95,10 @@ $externalPIEPath: "" !default;
 
 	@mixin boxShadowWithLiteral ($literal01: "", $literal02: "", $literal03: "", $literal04: "", $literal05: "", $literal06: "", $literal07: "", $literal08: "", $literal09: "", $literal10: "", $literal11: "", $literal12: "") {
 	
-		$concatnatedString: $literal01;
-
-		@if $literal02 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal02};	}
-		@if $literal03 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal03};	}
-		@if $literal04 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal04};	}
-		@if $literal05 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal05};	}
-		@if $literal06 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal06};	}	
-		@if $literal07 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal07};	}	
-		@if $literal08 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal08};	}
-		@if $literal09 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal09};	}
-		@if $literal10 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal10};	}
-		@if $literal11 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal11};	}
-		@if $literal12 != "" {	$concatnatedString: #{$concatnatedString}, #{$literal12};	}
-
-		@include everyone(box-shadow, $concatnatedString);
-			
+		@include enqueueStart(box-shadow);
+		@include enqueueMany($literal01, $literal02, $literal03, $literal04, $literal05, $literal06, $literal07, $literal08, $literal09, $literal10, $literal11, $literal12); 
+		@include enqueueCommit;
+					
 	}
 	
 
@@ -796,6 +427,30 @@ $externalPIEPath: "" !default;
 		@include everyone(transform-origin, $originX $originY);
 	
 	}
+	
+	@mixin enqueueTransformRotate ($degrees: 0deg) {
+		
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(rotate($degrees));
+	
+	}
+	
+	@mixin enqueueTransformScale ($ratio: 1) {
+	
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(scale($ratio));
+	
+	}
+	
+	@mixin enqueueTransformTranslate ($deltaX: 0, $deltaY: 0) {
+	
+		@if unit($deltaX) == "" {	$deltaX: 1px * $deltaX;	}
+		@if unit($deltaY) == "" {	$deltaY: 1px * $deltaY;	}
+
+		@include enqueueStart(transform, true, " ");
+		@include enqueue(translate($deltaX, $deltaY)); 
+	
+	}
 
 
 
@@ -910,7 +565,7 @@ $externalPIEPath: "" !default;
 	
 	@mixin uaDisableTextZoom {
 	
-		@include everyone(text-size-adjuse, none);
+		@include everyone(text-size-adjust, none);
 		
 	}
 	
@@ -952,7 +607,7 @@ $externalPIEPath: "" !default;
 
 
 
-	@mixin gradientBackdrop ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5), $fromTop: 0%, $fromLeft: 0%, $toTop: 100%, $toLeft: 0%) {
+	@mixin gradientBackdrop ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5), $fromLeft: 0%, $fromTop: 0%, $toLeft: 0%, $toTop: 0%) {
 	
 		@if $fromColor == transparent {
 		
@@ -966,18 +621,62 @@ $externalPIEPath: "" !default;
 		
 		}
 		
-		background-color: (opacify($fromColor, 1) + opacify($toColor, 1)) / 2;
-	
-		background-color: transparentize(
+		@include colorComposite(
 		
-			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
-			(alpha($fromColor) + alpha($toColor)) / 2
-			
+			background-color,
+			mix($fromColor, $toColor)
+		
 		);
-	
-		background: -webkit-gradient(linear, $fromTop $fromLeft, $toTop $toLeft, color-stop(0, $fromColor), color-stop(1, $toColor));
 		
-		background: -moz-linear-gradient($fromTop $fromLeft, $fromColor, $toColor $toTop $toLeft);
+	
+	//	WebKit	
+		
+		background-image: -webkit-gradient(linear, $fromLeft $fromTop, $toLeft $toTop, color-stop(0, $fromColor), color-stop(1, $toColor));
+		
+		
+	//	Firefox
+		
+		$directionHorizontal: "";
+		$directionVertical: "";
+		$directionLiteralSpacer: "";
+		
+		@if ($fromLeft < $toLeft) {
+		
+			$directionHorizontal: "left"
+			
+		} @elseif ($fromLeft > $toLeft){
+		
+			$directionHorizontal: "right"
+			
+		}
+		
+		@if ($fromTop < $toTop) {
+		
+			$directionVertical: "top"
+			
+		} @elseif ($fromTop > $toTop){
+		
+			$directionVertical: "bottom"
+			
+		}
+		
+		@if $directionHorizontal != "" and $directionVertical != "" {
+		
+			$directionLiteralSpacer: " ";
+		
+		}
+		
+		background-image: -moz-linear-gradient(#{$directionHorizontal}#{$directionLiteralSpacer}#{$directionVertical}, $fromColor, $toColor);
+		
+		
+	//	PIE / IE	
+			
+		@if ($fromLeft == 0%) and ($fromTop == 0%) and ($toLeft == 0%) and ($toTop == 100%) {
+		
+			-pie-background: linear-gradient(opacify($fromColor, 1), opacify($toColor, 1));
+			@include hackPIE;
+		
+		}
 	
 	}
 	
@@ -987,16 +686,8 @@ $externalPIEPath: "" !default;
 	
 	@mixin gradientBackdropVertical ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
 	
-		background-color: transparentize(
-		
-			(opacify($fromColor, 1) + opacify($toColor, 1)) / 2,
-			(alpha($fromColor) + alpha($toColor)) / 2
+		@include gradientBackdrop($fromColor, $toColor, 0%, 0%, 0%, 100%);
 			
-		);
-	
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background: -moz-linear-gradient(top, $fromColor 0%, $toColor 100%);
-	
 	}
 	
 	
@@ -1005,10 +696,7 @@ $externalPIEPath: "" !default;
 	
 	@mixin gradientBackdropHorizontal ($fromColor: rgba(0, 0, 0, .1), $toColor: rgba(0, 0, 0, .5)) {
 	
-		background-color: ($fromColor + $toColor) / 2;
-	
-		background: -webkit-gradient(linear, left top, right top, color-stop(0, $fromColor), color-stop(1, $toColor));
-		background: -moz-linear-gradient(left, $fromColor 0%, $toColor 100%);
+		@include gradientBackdrop($fromColor, $toColor, 0%, 0%, 100%, 0%);
 	
 	}
 
@@ -1025,13 +713,18 @@ $externalPIEPath: "" !default;
 		margin-top: .5 * $height - 1;
 		margin-bottom: .5 * $height - 1;
 		
-		border-top: 1px solid $colorTopEngrave;
-		border-bottom: 1px solid $colorBottomEngrave;
+		border-top-width: 1px;
+		border-top-style: solid;
+		@include colorComposite(border-top-color, $colorTopEngrave);
+		
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		@include colorComposite(border-bottom-color, $colorBottomEngrave);
 		
 		@if $reversed != no {
 		
-			border-top-color: $colorBottomEngrave;
-			border-bottom-color: $colorTopEngrave;
+			@include colorComposite(border-top-color, $colorBottomEngrave);
+			@include colorComposite(border-bottom-color, $colorTopEngrave);
 		
 		}
 			
@@ -1046,13 +739,18 @@ $externalPIEPath: "" !default;
 		margin-left: .5 * $width - 1;
 		margin-right: .5 * $width - 1;
 		
-		border-left: 1px solid $colorLeftEngrave;
-		border-right: 1px solid $colorRightEngrave;
+		border-left-width: 1px;
+		border-left-style: solid;
+		@include colorComposite(border-left-color, $colorLeftEngrave);
+		
+		border-right-width: 1px;
+		border-right-style: solid;
+		@include colorComposite(border-right-color, $colorRightEngrave);
 		
 		@if $reversed != no {
 		
-			border-left-color: $colorRightEngrave;
-			border-right-color: $colorLeftEngrave;
+			@include colorComposite(border-left-color, $colorRightEngrave);
+			@include colorComposite(border-right-color, $colorLeftEngrave);
 		
 		}
 			
@@ -1062,7 +760,7 @@ $externalPIEPath: "" !default;
 	
 	
 	
-	@mixin shadowUp {
+		@mixin shadowUp {
 	
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0, 0)), color-stop(1, rgba(0,0,0, 1)));
 		background: -moz-linear-gradient(center top, rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 100%);
@@ -1193,54 +891,41 @@ $externalPIEPath: "" !default;
 	
 	
 	
-	@mixin triangle ($tipDirection: "top", $edgeLength: 8px, $blockSize: 16px, $color: black) {
+	@mixin triangle ($tipDirection:top, $edgeLength:8px, $blockSize:16px, $color:black, $ratio:0.5) {
 	
 		@include textReset; 
 	
-		border: $edgeLength solid $color;
+		$horizontalMarginMultiplier: 1;
+		$verticalMarginMultiplier: 1;
+		
+		@if $tipDirection == top or $tipDirection == bottom {
+		
+			$verticalMarginMultiplier: $ratio;
+		
+		} @elseif $tipDirection == left or $tipDirection == right {
+		
+			$horizontalMarginMultiplier: $ratio;
+		
+		}
+		
+		$coloredEdge: "";
+		
+		@if $tipDirection == top { $coloredEdge: bottom; }
+		@if $tipDirection == right { $coloredEdge: left; }
+		@if $tipDirection == bottom { $coloredEdge: top; }
+		@if $tipDirection == left { $coloredEdge: right; }
+		
+		border: $ratio * $edgeLength solid $color;
 		border-color: transparent;
+		
+		border-#{$tipDirection}-width: $edgeLength;
+		border-#{$coloredEdge}-width: $edgeLength;
 		
 		border-#{$tipDirection}-width: 0;
 		
-		$ratio: 0.5;
+		border-#{$coloredEdge}-color: $color;
 		
-		@if $tipDirection == "top" {
-		
-			border-bottom-color: $color;
-		
-			border-right-width: $ratio * $edgeLength;
-			border-left-width: $ratio * $edgeLength;
-			
-			margin: (0.5 * ($blockSize - $ratio * $edgeLength)) (0.5 * ($blockSize - $edgeLength));
-		
-		} @else if $tipDirection == "right" {
-		
-			border-left-color: $color;
-			
-			border-top-width: $ratio * $edgeLength;
-			border-bottom-width: $ratio * $edgeLength;
-			
-			margin: (0.5 * ($blockSize - $edgeLength)) (0.5 * ($blockSize - $ratio * $edgeLength));
-		
-		} @else if $tipDirection == "bottom" {
-		
-			border-top-color: $color;
-			
-			border-right-width: $ratio * $edgeLength;
-			border-left-width: $ratio * $edgeLength;
-			
-			margin: (0.5 * ($blockSize - $ratio * $edgeLength)) (0.5 * ($blockSize - $edgeLength));
-		
-		} @else if $tipDirection == "left" {
-		
-			border-right-color: $color;
-		
-			border-top-width: $ratio * $edgeLength;
-			border-bottom-width: $ratio * $edgeLength;
-			
-			margin: (0.5 * ($blockSize - $edgeLength)) (0.5 * ($blockSize - $ratio * $edgeLength));
-		
-		}
+		margin: (0.5 * ($blockSize - $verticalMarginMultiplier * $edgeLength)) (0.5 * ($blockSize - $horizontalMarginMultiplier * $edgeLength));
 	
 	}
 
@@ -1281,8 +966,14 @@ $externalPIEPath: "" !default;
 	@mixin opacity ($level) {
 	
 		opacity: $level;
-		-moz-opacity: $level;
-		filter: progid:DXImageTransform.Microsoft.Alpha(opacity=#{$level});
+		-moz-opacity: $level;	
+		
+		@if type-of($level) == "number" {
+
+			filter: progid:DXImageTransform.Microsoft.Alpha(opacity=#{100 * $level});
+			-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(opacity=#{100 * $level})';
+		
+		}
 	
 	}
 

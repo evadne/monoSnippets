@@ -88,6 +88,21 @@ a {
 	text-decoration: inherit;
 	font-weight: inherit;
 	font-style: inherit;
+	outline: none;
+
+//	Here somebody would suggest removing the outline with JS — namely calling blur() on focus.  That kills screenreaders so we would not be doing that.
+
+	&:active {
+
+		outline: none;
+	
+	}
+
+	&:focus {
+
+		-moz-outline-style: none;
+
+	}
 
 }
 

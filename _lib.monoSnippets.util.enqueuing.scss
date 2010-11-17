@@ -1,0 +1,119 @@
+//	monoSnippets.util.enqueuing.scss
+//	Making working with a single value from multiple mixins easy.
+
+//	Evadne Wu at Iridia, 2010
+	
+	
+	
+	
+	
+	$mnEnqueueing: false;
+	$mnEnqueueingForEveryone: true;
+	
+	$mnEnqueueingKey: "";
+	$mnEnqueueingValueStore: "";
+	$mnEnqueueingSeparator: ", ";
+
+	@mixin enqueueStart ($forKey:color, $forEveryone:true, $separator: ", ") {
+	
+		@if $mnEnqueueing == false {
+			
+			$mnEnqueueingKey: $forKey;
+			$mnEnqueueingForEveryone: $forEveryone;
+			$mnEnqueueingSeparator: $separator;
+			$mnEnqueueing: true;
+		
+		} @elseif $mnEnqueueingKey != $forKey {
+		
+			@warn "Enqueuing of key " + $forKey + " must finish before value for another key may be enqueued.";
+			
+		}
+	
+	}
+	
+	@mixin enqueue ($value) {
+	
+		@if $value != "" {
+	
+		@if $mnEnqueueingValueStore == "" {
+		
+			$mnEnqueueingValueStore: $value;
+		
+		} @else {
+		
+			$mnEnqueueingValueStore: $mnEnqueueingValueStore + unquote($mnEnqueueingSeparator) + $value;
+		
+		}
+		
+		}
+	
+	}
+	
+	@mixin enqueueMany ($in01: "",  $in02: "",  $in03: "",  $in04: "",  $in05: "",  $in06: "",  $in07: "",  $in08: "",  $in09: "",  $in10: "",  $in11: "",  $in12: "",  $in13: "",  $in14: "",  $in15: "",  $in16: "",  $in17: "",  $in18: "",  $in19: "",  $in20: "",  $in21: "",  $in22: "",  $in23: "",  $in24: "",  $in25: "",  $in26: "",  $in27: "",  $in28: "",  $in29: "",  $in30: "",  $in31: "",  $in32: "",  $in33: "",  $in34: "",  $in35: "",  $in36: "",  $in37: "",  $in38: "",  $in39: "",  $in40: "") {
+	
+		@include enqueue($in01);
+		@include enqueue($in02);
+		@include enqueue($in03);
+		@include enqueue($in03);
+		@include enqueue($in04); 
+		@include enqueue($in05); 
+		@include enqueue($in06); 
+		@include enqueue($in07); 
+		@include enqueue($in08); 
+		@include enqueue($in09); 
+		@include enqueue($in10);
+		@include enqueue($in11);
+		@include enqueue($in12); 
+		@include enqueue($in13); 
+		@include enqueue($in14); 
+		@include enqueue($in15); 
+		@include enqueue($in16); 
+		@include enqueue($in17); 
+		@include enqueue($in18); 
+		@include enqueue($in19); 
+		@include enqueue($in20); 
+		@include enqueue($in21); 
+		@include enqueue($in22); 
+		@include enqueue($in23); 
+		@include enqueue($in24); 
+		@include enqueue($in25); 
+		@include enqueue($in26); 
+		@include enqueue($in27); 
+		@include enqueue($in28); 
+		@include enqueue($in29); 
+		@include enqueue($in30); 
+		@include enqueue($in31); 
+		@include enqueue($in32); 
+		@include enqueue($in33); 
+		@include enqueue($in34); 
+		@include enqueue($in35); 
+		@include enqueue($in36); 
+		@include enqueue($in37); 
+		@include enqueue($in38); 
+		@include enqueue($in39); 
+		@include enqueue($in40);
+		
+	}
+	
+	@mixin enqueueCommit {
+	
+		@if $mnEnqueueingForEveryone == true {
+		
+			@include everyone($mnEnqueueingKey, $mnEnqueueingValueStore);
+		
+		} @elseif $mnEnqueueingKey != "" {
+	
+			#{$mnEnqueueingKey}: $mnEnqueueingValueStore;
+		
+		}
+		
+		$mnEnqueueingKey: "";
+		$mnEnqueueingValueStore: "";
+		$mnEnqueueing: false;
+	
+	}
+	
+	
+	
+	
+	
