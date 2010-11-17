@@ -17,7 +17,7 @@ var mono = {
 	
 	log: function(message) {
 		
-		if (window.console == undefined) return mono;
+		if ((window && window.console || undefined) == undefined) return mono;
 
 		try {
 
