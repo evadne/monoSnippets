@@ -11,6 +11,8 @@
 	$pathPIE: "" !default;
 	$pathIRMigrator: "" !default; 
 	
+	$MNTextDelimitionFirefoxHacksEnabled: 1 !default;
+	
 	$irMigratorPrefix: "##IRIDIA_MIGRATE_DOCUMENT_ROOT##/" !default;
 
 	@if ($irMigratorEnabled == yes) {

@@ -54,8 +54,12 @@
 
 		white-space: nowrap;
 		overflow: hidden;
+		
+		@if $MNTextDelimitionFirefoxHacksEnabled == 1 {
 
-		-moz-binding: url($pathMonoSnippets + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
+			-moz-binding: url($pathMonoSnippets + 'lib.monoSnippets.hack.delimitText.firefoxBinding.xml#delimitText');
+		
+		}
 	
 	}
 	
